@@ -1,0 +1,604 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="display 属性的详解display:block
+block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。
+block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。
+block元素可以设置margin和padding属性。
+
+display:inline
+inline元素不会独占一行，多个相邻的行内元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="display属性详解">
+<meta property="og:url" content="http://yoursite.com/2016/01/15/display属性详解/index.html">
+<meta property="og:site_name" content="ksir's blog">
+<meta property="og:description" content="display 属性的详解display:block
+block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。
+block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。
+block元素可以设置margin和padding属性。
+
+display:inline
+inline元素不会独占一行，多个相邻的行内元素">
+<meta property="og:updated_time" content="2016-12-11T14:11:19.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="display属性详解">
+<meta name="twitter:description" content="display 属性的详解display:block
+block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。
+block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。
+block元素可以设置margin和padding属性。
+
+display:inline
+inline元素不会独占一行，多个相邻的行内元素">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> display属性详解 | ksir's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ksir's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                display属性详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-15T22:04:01+08:00" content="2016-01-15">
+              2016-01-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="display-属性的详解"><a href="#display-属性的详解" class="headerlink" title="display 属性的详解"></a>display 属性的详解</h2><h4 id="display-block"><a href="#display-block" class="headerlink" title="display:block"></a>display:block</h4><ul>
+<li>block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。</li>
+<li>block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。</li>
+<li>block元素可以设置margin和padding属性。</li>
+</ul>
+<h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display:inline"></a>display:inline</h4><ul>
+<li>inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。</li>
+<li>inline元素设置width,height属性无效。</li>
+<li>inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。</li>
+</ul>
+<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h4><ul>
+<li>简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。</li>
+</ul>
+<h4 id="inline-table"><a href="#inline-table" class="headerlink" title="inline-table"></a>inline-table</h4><ul>
+<li>以表格的形式排列成行。 显示样式如下：</li>
+</ul>
+<h4 id="list-item"><a href="#list-item" class="headerlink" title="list-item"></a>list-item</h4><ul>
+<li>以列表项的形式显示，类似</li><li>标签。</li>
+</ul>
+<h4 id="run-in"><a href="#run-in" class="headerlink" title="run-in"></a>run-in</h4><ul>
+<li>若run-in框后面不是块级框时，run-in框本身将成为块级框</li>
+</ul>
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><ul>
+<li>弹性盒子或者说伸缩盒子</li>
+</ul>
+<h2 id="inline-block-在什么情况下用"><a href="#inline-block-在什么情况下用" class="headerlink" title="inline-block 在什么情况下用"></a>inline-block 在什么情况下用</h2><blockquote>
+<p>元素变成行内元素且有块级元素的属性（width，height等）的时候用,比如说我们的logo放在a标签内时,想要a标签的宽和高能够包裹logo的话需要把a标签设置为inline-block</p>
+</blockquote>
+<h2 id="inline-block-和-float的区别"><a href="#inline-block-和-float的区别" class="headerlink" title="inline-block 和 float的区别"></a>inline-block 和 float的区别</h2><ul>
+<li>使用inline-block：当你需要控制元素的垂直对齐跟水平排列时，使用inline-block。</li>
+<li>使用浮动：当你需要让元素环绕某一个元素时，或者需要支持旧版本ie，或者不想处理inline-block带来的空白问题时，使用浮动。</li>
+</ul>
+<blockquote>
+<p>若父元素中的图片等高，设置浮动就会工作正常。但一旦有一列图片比较高时，图片的排列就会出现问题。这是因为浮动后，图片脱离了文档流。<br>而inline-block由于未脱离文档流，不会出现这个问题。如果你想再创建一列图片时，不会受到上一列图片inline:block的影响。而你在使用时需要时刻注意清除浮动，当内容不断变化时这很容易产生bug。<br>另一种inline-block的适用场景：横向导航栏。通常，我们一般会设置a元素display：block然后进行浮动来制作。有时候我会直接通过对列表元素设置display:inline来制作。如果在制作中，你需要设置不同的display属性来处理浮动，那么inline-block不失为一种更好的解决方案。<br>当你需要将元素排列成一行或者多行时，更倾向于考虑使用inline-block代替float。当然，直接使用table也是一种方法，他毕竟是专门用来处理横向与纵向排列的元素的。<br>如果你需要创建一个很复杂的包含行列的布局，table是你的最佳选择，不过你同样也可以考虑inline-block</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/11/CSS-hack/" rel="next" title="CSS hack">
+                <i class="fa fa-chevron-left"></i> CSS hack
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/18/H5-C3新特性/" rel="prev" title="H5/C3新特性">
+                H5/C3新特性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ksir" />
+          <p class="site-author-name" itemprop="name">ksir</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#display-属性的详解"><span class="nav-number">1.</span> <span class="nav-text">display 属性的详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#display-block"><span class="nav-number">1.0.1.</span> <span class="nav-text">display:block</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#display-inline"><span class="nav-number">1.0.2.</span> <span class="nav-text">display:inline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#display-inline-block"><span class="nav-number">1.0.3.</span> <span class="nav-text">display:inline-block</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inline-table"><span class="nav-number">1.0.4.</span> <span class="nav-text">inline-table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-item"><span class="nav-number">1.0.5.</span> <span class="nav-text">list-item</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-in"><span class="nav-number">1.0.6.</span> <span class="nav-text">run-in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flex"><span class="nav-number">1.0.7.</span> <span class="nav-text">flex</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-block-在什么情况下用"><span class="nav-number">2.</span> <span class="nav-text">inline-block 在什么情况下用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-block-和-float的区别"><span class="nav-number">3.</span> <span class="nav-text">inline-block 和 float的区别</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ksir</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

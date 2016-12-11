@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="css 常见问题总结哪些css属性可以继承?
+可继承:
+
+font-size
+font-family
+color 
+ul
+li
+dl
+dd 
+dt 
+
+
+不可继承:
+
+border
+padding
+margin
+width
+height
+
+
+
+css 有哪些选择器,优先级如何计算
+id 选择器  (# myid)
+类选择器 (.myclass)
+标签选择器 (div)
+相邻选择器 (h1+p)
+子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css 常见问题总结">
+<meta property="og:url" content="http://yoursite.com/2016/01/08/css-常见问题总结/index.html">
+<meta property="og:site_name" content="ksir's blog">
+<meta property="og:description" content="css 常见问题总结哪些css属性可以继承?
+可继承:
+
+font-size
+font-family
+color 
+ul
+li
+dl
+dd 
+dt 
+
+
+不可继承:
+
+border
+padding
+margin
+width
+height
+
+
+
+css 有哪些选择器,优先级如何计算
+id 选择器  (# myid)
+类选择器 (.myclass)
+标签选择器 (div)
+相邻选择器 (h1+p)
+子">
+<meta property="og:updated_time" content="2016-12-11T14:10:19.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css 常见问题总结">
+<meta name="twitter:description" content="css 常见问题总结哪些css属性可以继承?
+可继承:
+
+font-size
+font-family
+color 
+ul
+li
+dl
+dd 
+dt 
+
+
+不可继承:
+
+border
+padding
+margin
+width
+height
+
+
+
+css 有哪些选择器,优先级如何计算
+id 选择器  (# myid)
+类选择器 (.myclass)
+标签选择器 (div)
+相邻选择器 (h1+p)
+子">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> css 常见问题总结 | ksir's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ksir's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                css 常见问题总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-08T20:03:39+08:00" content="2016-01-08">
+              2016-01-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="css-常见问题总结"><a href="#css-常见问题总结" class="headerlink" title="css 常见问题总结"></a>css 常见问题总结</h2><h4 id="哪些css属性可以继承"><a href="#哪些css属性可以继承" class="headerlink" title="哪些css属性可以继承?"></a>哪些css属性可以继承?</h4><ul>
+<li><p>可继承:</p>
+<ol>
+<li>font-size</li>
+<li>font-family</li>
+<li>color </li>
+<li>ul</li>
+<li>li</li>
+<li>dl</li>
+<li>dd </li>
+<li>dt </li>
+</ol>
+</li>
+<li><p>不可继承:</p>
+<ol>
+<li>border</li>
+<li>padding</li>
+<li>margin</li>
+<li>width</li>
+<li>height</li>
+</ol>
+</li>
+</ul>
+<h4 id="css-有哪些选择器-优先级如何计算"><a href="#css-有哪些选择器-优先级如何计算" class="headerlink" title="css 有哪些选择器,优先级如何计算"></a>css 有哪些选择器,优先级如何计算</h4><ul>
+<li>id 选择器  (# myid)</li>
+<li>类选择器 (.myclass)</li>
+<li>标签选择器 (div)</li>
+<li>相邻选择器 (h1+p)</li>
+<li>子代选择器 (div&gt;p)</li>
+<li>后代选择器 (div p)</li>
+<li>通配符选择器 (*)</li>
+<li>属性选择器 (div[class=”myclass”])</li>
+<li>伪类选择器 (a:hover, li:nth-child)</li>
+</ul>
+<p>css3 新增选择器</p>
+<ul>
+<li>p:first-of-type</li>
+<li>p:last-of-type</li>
+<li>p:only-of-type</li>
+<li>p:only-child</li>
+<li>nth-child(2)</li>
+<li>:enabled</li>
+<li>:disabled</li>
+<li>:checked</li>
+</ul>
+<blockquote>
+<p>优先级: !important &gt; 内联 &gt; id &gt; class &gt; tag</p>
+<p>优先级就近原则,样式定义最近者为准 内联 &gt; 嵌入 &gt; link引入</p>
+<p>以最后载入的样式为准</p>
+</blockquote>
+<h4 id="行内元素块元素分别有哪些"><a href="#行内元素块元素分别有哪些" class="headerlink" title="行内元素块元素分别有哪些"></a>行内元素块元素分别有哪些</h4><ul>
+<li><p>行内元素</p>
+<ol>
+<li>a - 锚点</li>
+<li>abbr - 缩写</li>
+<li>acronym - 首字</li>
+<li>b - 粗体(不推荐)</li>
+<li>bdo - bidi override</li>
+<li>big - 大字体</li>
+<li>br - 换行</li>
+<li>cite - 引用</li>
+<li>code - 计算机代码(在引用源码的时候需要)</li>
+<li>dfn - 定义字段</li>
+<li>em - 强调</li>
+<li>font - 字体设定(不推荐)</li>
+<li>i - 斜体</li>
+<li>img - 图片</li>
+<li>input - 输入框</li>
+<li>kbd - 定义键盘文本</li>
+<li>label - 表格标签</li>
+<li>q - 短引用</li>
+<li>s - 中划线(不推荐)</li>
+<li>samp - 定义范例计算机代码</li>
+<li>select - 项目选择</li>
+<li>small - 小字体文本</li>
+<li>span - 常用内联容器，定义文本内区块</li>
+<li>strike - 中划线</li>
+<li>strong - 粗体强调</li>
+<li>sub - 下标</li>
+<li>sup - 上标</li>
+<li>textarea - 多行文本输入框</li>
+<li>tt - 电传文本</li>
+<li>u - 下划线</li>
+<li>var - 定义变量</li>
+</ol>
+</li>
+<li><p>块元素</p>
+<ol>
+<li>address - 地址</li>
+<li>blockquote - 块引用</li>
+<li>center - 举中对齐块 </li>
+<li>dir - 目录列表 </li>
+<li>div - 常用块级容易，也是</li>
+<li>css layout的主要标签 </li>
+<li>dl - 定义列表 </li>
+<li>fieldset - form控制组 </li>
+<li>form - 交互表单 </li>
+<li>h1 - 大标题 </li>
+<li>h2 - 副标题 </li>
+<li>h3 - 3级标题 </li>
+<li>h4 - 4级标题 </li>
+<li>h5 - 5级标题 </li>
+<li>h6 - 6级标题 </li>
+<li>hr - 水平分隔线 </li>
+<li>isindex - input prompt </li>
+<li>menu - 菜单列表 </li>
+<li>noframes - frames可选内容，（对于不支持frame的浏览器显示此区块内容</li>
+<li>noscript - 可选脚本内容（对于不支持script的浏览器显示此内容） </li>
+<li>ol - 排序表单 </li>
+<li>p - 段落 </li>
+<li>pre - 格式化文本 </li>
+<li>table - 表格 </li>
+<li>ul - 非排序列表</li>
+</ol>
+</li>
+</ul>
+<h4 id="DIV-CSS两种盒子模型"><a href="#DIV-CSS两种盒子模型" class="headerlink" title="DIV CSS两种盒子模型"></a>DIV CSS两种盒子模型</h4><ul>
+<li>定义: </li>
+</ul>
+<blockquote>
+<p>网页设计中常听的属性名：内容(content)、填充(padding)、边框(border)、边界(margin)， CSS盒子模式都具备这些属性。<br>这些属性我们可以用日常生活中的常见事物——盒子作一个比喻来理解，所以叫它盒子模式。<br>CSS盒子模型就是在网页设计中经常用到的CSS技术所使用的一种思维模型。</p>
+</blockquote>
+<ul>
+<li>标准盒子模型/W3C盒子模型 - content-box</li>
+</ul>
+<blockquote>
+<p>范围包括margin,border,padding,content 并且content不包含其他部分</p>
+</blockquote>
+<ul>
+<li>IE盒子模型 - bordr-box</li>
+</ul>
+<blockquote>
+<p>范围包括margin,border,paddin,content 和W3C盒子模型不同的是它的content包含了border和padding</p>
+</blockquote>
+<pre>content-box和border-box的主要区别是二者的盒子的宽度是否包含元素的边框和内边距。</pre>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/05/Javascript面向对象篇-2/" rel="next" title="Javascript面向对象篇 2">
+                <i class="fa fa-chevron-left"></i> Javascript面向对象篇 2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/11/CSS-hack/" rel="prev" title="CSS hack">
+                CSS hack <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ksir" />
+          <p class="site-author-name" itemprop="name">ksir</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#css-常见问题总结"><span class="nav-number">1.</span> <span class="nav-text">css 常见问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#哪些css属性可以继承"><span class="nav-number">1.0.1.</span> <span class="nav-text">哪些css属性可以继承?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css-有哪些选择器-优先级如何计算"><span class="nav-number">1.0.2.</span> <span class="nav-text">css 有哪些选择器,优先级如何计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行内元素块元素分别有哪些"><span class="nav-number">1.0.3.</span> <span class="nav-text">行内元素块元素分别有哪些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DIV-CSS两种盒子模型"><span class="nav-number">1.0.4.</span> <span class="nav-text">DIV CSS两种盒子模型</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ksir</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

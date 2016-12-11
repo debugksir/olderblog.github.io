@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/11/13/Javascript数据类型/" itemprop="url">
-                  Javascript数据类型
+                <a class="post-title-link" href="/2016/01/11/CSS-hack/" itemprop="url">
+                  CSS hack
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-13T19:57:32+08:00" content="2015-11-13">
-              2015-11-13
+            <time itemprop="dateCreated" datetime="2016-01-11T19:03:14+08:00" content="2016-01-11">
+              2016-01-11
             </time>
           </span>
 
@@ -274,169 +274,58 @@
       
         
           
-            <h2 id="5种数据类型："><a href="#5种数据类型：" class="headerlink" title="5种数据类型："></a>5种数据类型：</h2><ul>
-<li><p>基本数据类型：Undefined、Null、Boolean、Number、String</p>
-<ol>
-<li>基本类型值是指简单的数据段，5种基本类型是按值访问的，因为可以操作保存在变量中的实际值</li>
-<li>基本类型的值在内存中占据固定大小的空间，被保存在栈内存中。从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</li>
-<li>不能给基本类型的值添加属性</li>
-</ol>
-</li>
-<li><p>引用数据类型：Object</p>
-<ol>
-<li>引用类型值是指那些可以由多个值构成的对象。js不允许直接访问内存中的位置，也就是不能直接访问操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。</li>
-<li>引用类型的值是对象，保存在堆内存中，包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</li>
-<li>对于引用类型的值，可以为其添加属性和方法，也可以改变和删除其属性和方法</li>
-</ol>
-</li>
-<li><p>Undefined</p>
-<ol>
-<li>Undefined类型只有一个值，就是undefined</li>
-<li>var a &lt;=&gt; var a = undefined;   </li>
-<li>对于尚未声明过的变量，只能执行一项操作，就是使用typeof操作符检测其数据类型【但在严格模式下会导致错误】</li>
-<li>出现场景：<ul>
-<li>已声明未赋值的变量</li>
-<li>获取对象不存在的属性</li>
-<li>无返回值的函数的执行结果</li>
-<li>函数的参数没有传入</li>
-<li>void(expression)</li>
-</ul>
-</li>
-<li>类型转换<ul>
-<li>Boolean(undefined)：false</li>
-<li>Number(undefined):NaN</li>
-<li>String(undefined):’undefined’</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Null</p>
-<ol>
-<li>Null类型只有一个值，就是null,逻辑角度看，null值表示一个空对象指针</li>
-<li>如果定义的变量将用于保存对象，最好将该变量初始化为null</li>
-<li>实际上undefined值是派生自null值的，所以undefined == null</li>
-<li>出现场景：对象不存在时</li>
-<li>类型转换<ul>
-<li>Boolean(null)：false</li>
-<li>Number(null):0</li>
-<li>String(null):’null’       <blockquote>
-<p>注意:null是空对象指针，而[]是空数组，{}是空对象，三者不相同<br>注意null不能添加自定义属性</p>
+            <h2 id="css-hack-概念"><a href="#css-hack-概念" class="headerlink" title="css hack 概念"></a>css hack 概念</h2><blockquote>
+<p>由于不同厂商的流览器或某浏览器的不同版本（如IE6-IE11,Firefox/Safari/Opera/Chrome等），对CSS的支持、解析不一样，导致在不同浏览器的环境中呈现出不一致的页面展现效果。这时，我们为了获得统一的页面效果，就需要针对不同的浏览器或不同版本写特定的CSS样式，我们把这个针对不同的浏览器/不同版本写相应的CSS code的过程，叫做CSS hack!</p>
 </blockquote>
-</li>
+<h2 id="css-hack-分类"><a href="#css-hack-分类" class="headerlink" title="css hack 分类"></a>css hack 分类</h2><ul>
+<li>属性前缀法(即类内部Hack)：例如 IE6能识别下划线”<em>“和星号” <em> “，IE7能识别星号” </em> “，但不能识别下划线”</em>“，IE6~IE10都认识”\9”，但firefox前述三个都不能认识。</li>
+<li>选择器前缀法(即选择器Hack)：例如 IE6能识别<em>html .class{}，IE7能识别</em>+html .class{}或者*:first-child+html .class{}。</li>
+<li>IE条件注释法(即HTML条件注释Hack)：针对所有IE(注：IE10+已经不再支持条件注释)： <!--[if IE]>IE浏览器显示的内容 <![endif]-->，针对IE6及以下版本： <!--[if lt IE 6]>只在IE6-显示的内容 <![endif]-->。这类Hack不仅对CSS生效，对写在判断语句里面的所有代码都会生效。</li>
 </ul>
-</li>
-</ol>
-</li>
-<li><p>Boolean</p>
-<ol>
-<li>Boolean类型只有两个值：true 和 false<br>2.出现场景：<ul>
-<li>条件语句导致系统执行的隐士类型转换</li>
-<li>字面量或变量定义</li>
+<h4 id="条件注释法"><a href="#条件注释法" class="headerlink" title="条件注释法"></a>条件注释法</h4><pre>
+    只在IE下生效
+    <!--[if IE]>
+    这段文字只在IE浏览器显示
+    <![endif]-->
+
+    只在IE6下生效
+    <!--[if IE 6]>
+    这段文字只在IE6浏览器显示
+    <![endif]-->
+
+    只在IE6以上版本生效
+    <!--[if gte IE 6]>
+    这段文字只在IE6以上(包括)版本IE浏览器显示
+    <![endif]-->
+
+    只在IE8上不生效
+    <!--[if ! IE 8]>
+    这段文字在非IE8浏览器显示
+    <![endif]-->
+
+    非IE浏览器生效
+    <!--[if !IE]>
+    这段文字只在非IE浏览器显示
+    <![endif]-->
+</pre>
+
+<h4 id="类内属性前缀法"><a href="#类内属性前缀法" class="headerlink" title="类内属性前缀法"></a>类内属性前缀法</h4><ul>
+<li>“-″减号是IE6专有的hack</li>
+<li>“\9″ IE6/IE7/IE8/IE9/IE10都生效</li>
+<li>“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack</li>
+<li>“\9\0″ 只对IE9/IE10生效，是IE9/10的hack</li>
+<li><em>html </em>前缀只对IE6生效</li>
+<li><em>+html </em>+前缀只对IE7生效</li>
+<li>@media screen\9{…}只对IE6/7生效</li>
+<li>@media \0screen {body { background: red; }}只对IE8有效</li>
+<li>@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效</li>
+<li>@media screen\0 {body { background: green; }} 只对IE8/9/10有效</li>
+<li>@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效</li>
+<li>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body - { background: orange; }} 只对IE10有效- </li>
 </ul>
-</li>
-<li>类型转换<ul>
-<li>Number(true): 1 || Number(false) : 0</li>
-<li>String(true):’true’ || String(false):’false’</li>
-</ul>
-</li>
-<li>Boolean()<ul>
-<li>Boolean(undefined):false</li>
-<li>Boolean(null):false</li>
-<li>Boolean(非空对象包括空数组[]和空对象{}):true</li>
-<li>Boolean(非0): true || Boolean(0和NaN):false</li>
-<li>Boolean(非空包括空格字符串):true || Boolean(‘’):false<blockquote>
-<p>[注意]true不一定等于1,false也不一定等于0</p>
+<h4 id="css-hack-利弊"><a href="#css-hack-利弊" class="headerlink" title="css hack 利弊"></a>css hack 利弊</h4><blockquote>
+<p>一般情况下，我们尽量避免使用CSS hack，但是有些情况为了顾及用户体验实现向下兼容，不得已才使用hack。比如由于IE8及以下版本不支持CSS3,而我们的项目页面使用了大量CSS3新属性在IE9/Firefox/Chrome下正常渲染，这种情况下如果不使用css3pie或htc或条件注释等方法时,可能就得让IE8-的专属hack出马了。使用hack虽然对页面表现的一致性有好处，但过多的滥用会造成html文档混乱不堪，增加管理和维护的负担。相信只要大家一起努力，少用、慎用hack，未来一定会促使浏览器厂商的标准越来越趋于统一，顺利过渡到标准浏览器的主流时代。抛弃那些陈旧的IE hack，必将减轻我们编码的复杂度，少做无用功。一般情况下，我们尽量避免使用CSS hack，但是有些情况为了顾及用户体验实现向下兼容，不得已才使用hack。比如由于IE8及以下版本不支持CSS3,而我们的项目页面使用了大量CSS3新属性在IE9/Firefox/Chrome下正常渲染，这种情况下如果不使用css3pie或htc或条件注释等方法时,可能就得让IE8-的专属hack出马了。使用hack虽然对页面表现的一致性有好处，但过多的滥用会造成html文档混乱不堪，增加管理和维护的负担。相信只要大家一起努力，少用、慎用hack，未来一定会促使浏览器厂商的标准越来越趋于统一，顺利过渡到标准浏览器的主流时代。抛弃那些陈旧的IE hack，必将减轻我们编码的复杂度，少做无用功。</p>
 </blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Number</p>
-<ol>
-<li>Number类型使用IEEE754格式来表示整数和浮点数值<blockquote>
-<p>注意:可以用一个值-0来将其转换成一个数字</p>
-</blockquote>
-</li>
-<li>三种字面量格式是十进制、八进制、十六进制<ul>
-<li>八进制字面值的第一位必须是0，然后是八进制数字序列(0-7),如果字面值中的数值超出了范围，那么前导0将被忽略，后面的数值被当作十进制数解析</li>
-<li>八进制字面量在严格模式下是无效的，会导致js抛出错误</li>
-<li>十六进制字面值的前两位必须是0x,后跟十六进制数字序列，字母可大写可小写</li>
-<li>十六进制中字面值中的数值走出范围，如出现g,h等会报错</li>
-<li>在进行算术计算时，所有以八进制和十六进制表示的数值最终都将被转换成十进制数值</li>
-</ul>
-</li>
-<li>数值表示：<ul>
-<li>js中可以保存正0和负0，且被认为相等</li>
-<li>浮点数值：该数值中必须包含一个小数点，并且小数点后面必须至少有一位数字。<ol>
-<li>由于浮点型数值需要的内存空间是保存整数值的两倍，因此js会不失时机地将浮点数值转换成整数值，若小数点后没有跟任何数字或者浮点值本身表示的就是一个整数，这个数值会作为整数值来保存。</li>
-<li>浮点数值的最高精度是17位小数</li>
-<li>对于极大或者极小的数，可以用科学计数法e来表示的浮点数值来表示</li>
-<li>默认情况下，js会将小数点后面带有6个0以上的浮点数值转换为以e表示法表示的数值</li>
-<li>基于IEEE754数值的浮点计算的通病是舍入误差的问题。如：0.1+0.2 === 0.3(15个0)4</li>
-</ol>
-</li>
-<li>js中的数值范围是Number.MIN_VALUE(5e-324) ―― Number.MAX_VALUE(1.7976931348623157e+308)<ol>
-<li>如果超出正数范围，输出Infinity(正无穷大)，超出负数范围，输出-Infinity(负无穷大)</li>
-<li>+-Infinity不能参与数值计算</li>
-<li>Number.MAX_VALUE+1 != Infinity,因为计算机最多保存52位尾数位，保存不了1000多位，早就失去精度，即小数位全为0，所以相加不变</li>
-<li>Number.MIN_VALUE - 1 != -Infinity,也是同样的原因，所以结果为-1</li>
-<li>可以用isFinite()来确定一个数值是不是有穷的,包含着隐式类型转换Number()</li>
-<li>isFinite(NaN) //false</li>
-</ol>
-</li>
-<li>NaN<ol>
-<li>NaN与任何值都不相等，包括NaN本身</li>
-<li>任何涉及NaN的操作都会返回NaN</li>
-<li>isNaN()来判断这个数字是不是NaN,包含着隐式类型转换Number()</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>数值转换:Number()可用于任何类型，parseInt()和parseFloat专门用于把字符串转换成数值</p>
-<blockquote>
-<p>注意:Number()、parseInt()、parseFloat()可以接受各种进制的数字，但对于含数字的字符串并不适用<br>注意: Number()、parseInt()、parseFloat()中数字为1.2. 会报错，但字符串为’1.2.’则不会报错</p>
-</blockquote>
-<ol>
-<li><p>Number()</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Number(true):1 || Number(false):0</div><div class="line">Number(各种进制的数字)：运算后的十进制的数字，如1.0或1.或01会以1输出</div><div class="line">Number(undefined):NaN</div><div class="line">Number(null):0</div><div class="line">Number(字符串)：</div><div class="line">Number(只包含数字的十进制和十六进制的字符串)：运算后的十进制的数字</div><div class="line">[注意]字符串中不识别八进制，按照十进制数字处理</div><div class="line">Number(&apos;&apos;和&apos; &apos;):0</div><div class="line">Number(其他情况的字符串):NaN</div><div class="line">Number(对象)：</div><div class="line">Number([]和[0]和[-0]):0</div><div class="line">Number([数字])：运算后的数字</div><div class="line">Number([1,2]和&#123;&#125;和其他对象):NaN</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>2. parseInt()：在转换字符串时，会忽略字符串前面的空格，直到找到第一个非空格字符。如果第一个字符不是数字字符或者负号，parseInt()就会返回NaN。如果是，则继续解析，直到解析完成或者遇到非数字字符。
-    - parseInt()可以识别出各种进制的整数,但在解析八进制字面量的字符串，ECMAScript3会解析八进制，但ECMAScript5没有解析八进制的能力
-    - parseInt()函数提供第二个参数，表示多少进制，如：parseInt(&apos;123&apos;,16或10或2)
-    - parseInt(各种进制的数字)：运算后的十进制的数字，如1.0或1.或01会以1输出
-    - 因为parseInt()是专门用来处理字符串转换数字的，所以parseInt(其他类型包括&apos;&apos;)//NaN
-3. parseFloat():类似于parseInt()，会忽略字符串前面的空格，直到找到第一个非空格字符
-    - parseFloat()只能解析十进制字符串
-    - parseFloat(各种进制的数字)：运算后的十进制的数字，如1.0或1.或01会以1输出
-</code></pre><ul>
-<li><p>String:由单引号或双引号括起来的字符序列,任何字符串的长度都可以通过访问length属性获得</p>
-<ol>
-<li><p>字符字面量，也叫转义序列</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\n 换行</div><div class="line">\t 制表</div><div class="line">\b 空格</div><div class="line">\r 回车</div><div class="line">\f 进纸</div><div class="line">\\ 斜杠</div><div class="line">\&apos; 单引号</div><div class="line">\&quot; 双引号</div><div class="line">\xnn 以十六进制nn表示一个字符(n为0-f)，如\x41表示&apos;A&apos;</div><div class="line">\unnnn 以十六进制nnnn表示一个Unicode字符(n为0-f)，如\u03a3表示希腊字符ε</div></pre></td></tr></table></figure>
-</li>
-<li><p>ECMAScript中的字符串是不可变的   </p>
-</li>
-<li>字符串连接需要先创建一个新字符串，然后在新字符串中填充两个需要拼接的字符串，最后再销毁原来的字符串。这个过程在后台发生，也是在某些旧版本浏览器(IE6)拼接字符串速度慢的原因，但后来已经解决了这个低效率问题</li>
-<li><p>字符串转换</p>
-<ul>
-<li>toString()<br>  Null和Undefined没有该方法<br>  Boolean、Object、String有该方法<br>  Number使用该方法可以传递基数2、8、10、16,如var num = 10;num.toString(2);//1010<br>  但10.toString(2)会报错,因为数字后面不能跟标识符</li>
-<li>String()<br>  有toString()方法，使用toString()方法<br>  String(null);//‘null’<br>  String(undefined);//‘undefined’   </li>
-<li>要把某个值转换为字符串，可以使用加号操作符把它与一个空字符串’’加在一起</li>
-</ul>
-</li>
-<li><p>如果数组中的某一项的值是null或者undefined，那么该值在join()、toLocaleString()、toString()和valueOf()方法返回的结果中以空字符串表示<br>最后给大家一个简单的例子说明下这五种基本类型的不同</p>
-</li>
-</ol>
-</li>
-</ul>
 
           
         
@@ -469,7 +358,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -502,7 +391,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://b373.photo.store.qq.com/psb?/V12rkD5b3lolLh/BT*MSSkENzqaG9jXCLDVQ1JoLeTRsz7.li.YsQdnvM4!/b/dHUBAAAAAAAA&bo=kADiAAAAAAAFB1Y!&rf=viewer_4"
+               src="/images/avatar.gif"
                alt="ksir" />
           <p class="site-author-name" itemprop="name">ksir</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -510,7 +399,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

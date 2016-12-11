@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/05/Javascript面向对象篇-2/" itemprop="url">
-                  Javascript面向对象篇 2
+                <a class="post-title-link" href="/2016/01/19/bash常用命令/" itemprop="url">
+                  bash常用命令
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-05T13:58:44+08:00" content="2016-01-05">
-              2016-01-05
+            <time itemprop="dateCreated" datetime="2016-01-19T14:00:48+08:00" content="2016-01-19">
+              2016-01-19
             </time>
           </span>
 
@@ -274,167 +274,61 @@
       
         
           
-            <h2 id="表达式的概念"><a href="#表达式的概念" class="headerlink" title="表达式的概念"></a>表达式的概念</h2><ul>
-<li>广义的概念:所有返回的一段代码块,都可以成为表达式.比如:<pre>
-var a=0;
-var a, b;
-</pre></li>
-<li>a = 0;这个表达式的返回值为0;</li>
-<li>b = a;这个表达式的返回值为a;</li>
-<li>赋值表达式的返回值为=右边的值;</li>
+            <h2 id="bash常用命令"><a href="#bash常用命令" class="headerlink" title="bash常用命令"></a>bash常用命令</h2><ul>
+<li>cd: 改变目录</li>
+<li>pwd: 查看当前目录</li>
+<li>ls: 列出当前目录</li>
+<li>mkdir: 创建文件目录</li>
+<li>touch: 创建文件</li>
+<li>cat: 查看文件全部内容</li>
+<li>more: 或者 less 查看文件</li>
+<li>rm: 删除文件</li>
+<li>rm -rf: 删除文件目录</li>
+<li>rmdir: 删除空文件目录</li>
+<li>mv + 文件名 + 路径: 移动文件</li>
+<li>mv + 文件名 + 重命名 或者 mv + ./文件名 + ./重命名</li>
+<li>cp + 拷贝文件 + 路径</li>
+<li>head -n: 查看前 n 行</li>
+<li>tail -n: 查看后 n 行</li>
+<li>tab: 自动补全</li>
+<li>tab双击: 列出匹配内容</li>
+<li>history: 列出命令记录</li>
+<li>ssh: 远程登录</li>
+<li>>: 重定向</li>
+<li>>>: 重定向 并且追加</li>
+<li>wget: 下载</li>
+<li>tar: 解压缩</li>
+<li>curl: 网络请求</li>
+<li>whoami: 查看当前用户</li>
+<li>grep: 匹配内容</li>
 </ul>
-<h2 id="面向对象的概念"><a href="#面向对象的概念" class="headerlink" title="面向对象的概念:"></a>面向对象的概念:</h2><ul>
-<li><p>一种编程思想.核心:在解决任何问题的时候,首先试图去找到一个对象来帮助解决问题.</p>
-</li>
-<li><p>优点:</p>
-<blockquote>
-<ol>
-<li>身份:调度者;</li>
-<li>代码的灵活度高;</li>
-<li>可维护性高;</li>
-<li>可扩展性高;</li>
+<h3 id="vi编译器"><a href="#vi编译器" class="headerlink" title="vi编译器"></a>vi编译器</h3><ul>
+<li>输入 vi 进入命令模式</li>
+</ul>
+<h4 id="命令模式下"><a href="#命令模式下" class="headerlink" title="命令模式下:"></a>命令模式下:</h4><ul>
+<li>ZZ: 保存并退出</li>
+<li>u: 撤销</li>
+<li>dd: 删除行</li>
+<li>yy: 复制当前行</li>
+<li>p: 粘贴行</li>
+<li>ctrl+f: 向上翻页</li>
+<li>ctrl+b: 向下翻页</li>
+<li>i: 在光标处编辑</li>
+<li>a: 在光标后面编辑</li>
+<li>o: 在光标下创建新行</li>
+<li>O: 在光标上创建新行</li>
+<li>A: 将光标移至行尾</li>
+<li>:: 进入末行模式</li>
+<li>在末行模式下:<ol>
+<li>w: 保存</li>
+<li>q: 退出</li>
+<li>wq: 保存退出</li>
+<li>e!:撤销更改</li>
+<li>w filename: 另存为</li>
+<li>q!: 不保存强制退出</li>
+<li>set nu: 设置行号</li>
 </ol>
-</blockquote>
 </li>
-<li><p>缺点:</p>
-<blockquote>
-<ol>
-<li>可能造成代码的复杂度提高</li>
-<li>可读性相对不好</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程:"></a>面向过程:</h2><ul>
-<li>身份: 执行者</li>
-<li>顺序: 一般情况下不能打乱,从上至下一步一步执行.</li>
-</ul>
-<h2 id="javascript语言的特点"><a href="#javascript语言的特点" class="headerlink" title="javascript语言的特点:"></a>javascript语言的特点:</h2><ul>
-<li>弱类型</li>
-<li>多范式</li>
-<li>基于对象的语言:在js中,一切都是对象</li>
-<li>基于原形的语言</li>
-</ul>
-<h2 id="原型的概念"><a href="#原型的概念" class="headerlink" title="原型的概念"></a>原型的概念</h2><p><code>所谓原型形就是一个函数的prototype属性所引用的对象</code></p>
-<ul>
-<li>只要声明一个函数,那么原型就存在<pre>
-function foo(){};
-foo.prototype['name']='ksir';
-var f = new foo();
-console.log(f.constructor ===foo.prototype.constructor);
-</pre></li>
-<li>当通过该函数创建出来的每一个对象,都共享此原型,也就是说上述创建出来的所有对象可以直接访问到原型上的任何成员(属性和方法);<br>(对象的动态特性就是对象可以同过<code>.</code>或者<code>[]</code>来动态创建对象);</li>
-</ul>
-<h2 id="原型的本质"><a href="#原型的本质" class="headerlink" title="原型的本质"></a>原型的本质</h2><ul>
-<li>原型的本质就是对象</li>
-</ul>
-<pre>
-function Person(name,age,gender){
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.talk = function(){
-        console.log('hello');
-     }
- }
- var kangfeng = new Person('康峰',21,'男');
- var xiaoming = new Person('小明',20,'女');
- var xiaohong = new Person('小红','19','女');
-
- kangfeng.talk();
- xiaoming.talk();
- xiaohong.talk();
- //思考:这三个儿女的talk方法是否一样?
- console.log(xiaoming.talk === kangfeng.talk);
- console.log(xiaohong.talk === xiaohong.talk):
- //这三个对象的方法是不一样,相互独立的
- Person.prototype.addfu(){
-    console.log('给原型添加一个函数');
-}
-</pre>
-
-<ul>
-<li><p>在构造函数中存在相同的逻辑代码,然后再创建对象的时候,会拷贝该函数中的代码逻辑,把构造函数内的方法提取出来放在一个公共的地方,这个公共的地方是该构造函数创建出来的对象都能访问,–构造函数的所有对象能够共享构造函数的原型</p>
-</li>
-<li><p>有点:实现同类对象的数据共享</p>
-</li>
-</ul>
-<h2 id="获取原型的方式"><a href="#获取原型的方式" class="headerlink" title="获取原型的方式"></a>获取原型的方式</h2><ul>
-<li>通过函数:</li>
-</ul>
-<p><code>&lt;fnName&gt;.prototype;</code></p>
-<ul>
-<li>通过对象:</li>
-</ul>
-<pre>
-object.__proto__;
-//两个下划线
-</pre>
-
-<h2 id="对象的组成部分"><a href="#对象的组成部分" class="headerlink" title="对象的组成部分"></a>对象的组成部分</h2><p><code>对象本身;他的原型</code></p>
-<ul>
-<li>每一个对象都有<code>__proto__</code>属性,也就是说每一个对象都有原型</li>
-<li><code>Math.__proto__===object.prototype;</code></li>
-</ul>
-<h2 id="对象的类型就是构造函数的名字"><a href="#对象的类型就是构造函数的名字" class="headerlink" title="对象的类型就是构造函数的名字"></a>对象的类型就是构造函数的名字</h2><h2 id="原型属性-amp-原型对象"><a href="#原型属性-amp-原型对象" class="headerlink" title="原型属性&amp;原型对象"></a>原型属性&amp;原型对象</h2><ul>
-<li>原型属性:站在函数的角度,原型可以被称为该函数的原型属性</li>
-<li>原型对象:站在对象的角度,原型可以被称为该对象的原型对象</li>
-</ul>
-<h2 id="proto-这种双下划线的标准不是w3c的标准-这些属性都是非标准属性-有兼容性问题"><a href="#proto-这种双下划线的标准不是w3c的标准-这些属性都是非标准属性-有兼容性问题" class="headerlink" title="__proto__这种双下划线的标准不是w3c的标准,这些属性都是非标准属性,有兼容性问题"></a><code>__proto__</code>这种双下划线的标准不是w3c的标准,这些属性都是非标准属性,有兼容性问题</h2><ul>
-<li>如果我们无法通过通过双下划线获取原型属性的时候,我们就得通过函数来获取它</li>
-</ul>
-<pre>
-function getPrototype(obj){
-    //判断浏览器是否兼容__proto__属性
-    //return !!obj.__proto__? obj.__proto__:obj.constructor.prototype;
-    if(obj.__proto__){
-    //支持
-        return obj.__proto__;
-    }else{
-        //获取该对象的构造函数
-        //在通过此函数的prototype属性获取其原型对象
-        return obj.constructor.prototype;
-    }
-}
-
-function A(){};
-var a = A();
-console.log(getPrototype(a).constructor);
-//如果我们的函数中有if else return结构,我们可以用3元运算符来优化.
-
-</pre>
-
-<h2 id="标准构造函数的写法"><a href="#标准构造函数的写法" class="headerlink" title="标准构造函数的写法"></a>标准构造函数的写法</h2><pre>
-//哪些属性要保存在构造函数的内部,哪些属性需要提取出来放放原型上
-
-function B(name){};
-B.prototype.name = 'tom';
-var tom = new B;
-console.log(tome.name);
-var jim = new jim;
-console.log(jim.name);
-//结果都是tom
-//所以和具体某个对象息息相关的称为私有属性,这写属性都必须写在构造函数内,那些共享的属性(每个对象都具有的属性,不会随对象变化而变化,比如说一些方法(对象的行为)--公有属性)就可以定义在原型属性中.
-//一般情况下,构造函数的方法放原型上
-//不提倡在js原生对象上进行扩展成员
-//坏处,会导致原生对象过于庞大,累赘,影响性能
-</pre>
-
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
-<li>给构造函数添加方法一般添加在原型上,为了方便,一般将方法以对象的形式添加到 &lt;构造函数名&gt;.prototype{}里面,同时,不要忘了添加<code>constructor: 构造函数名</code> 键值对</li>
-</ul>
-<h2 id="原型的特性"><a href="#原型的特性" class="headerlink" title="原型的特性"></a>原型的特性</h2><h3 id="动态性"><a href="#动态性" class="headerlink" title="动态性:"></a>动态性:</h3><ul>
-<li>给原型扩展成员会直接反应到已创建的对象身上</li>
-<li>替换原型对象,不会反应到已创建出来的对象,但是会直接影响之后创建出来的对象</li>
-</ul>
-<h3 id="唯一性"><a href="#唯一性" class="headerlink" title="唯一性"></a>唯一性</h3><ul>
-<li>由同一函数创建出来的所有对象,共享同一个原型对象</li>
-</ul>
-<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性:"></a>不可变性:</h3><ul>
-<li>对象是无法改变原型对象上的任何成员</li>
-</ul>
-<h3 id="继承性"><a href="#继承性" class="headerlink" title="继承性:"></a>继承性:</h3><ul>
-<li>所有对象都继承自它的原型对象</li>
 </ul>
 
           
@@ -468,7 +362,7 @@ console.log(jim.name);
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -501,7 +395,7 @@ console.log(jim.name);
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://b373.photo.store.qq.com/psb?/V12rkD5b3lolLh/BT*MSSkENzqaG9jXCLDVQ1JoLeTRsz7.li.YsQdnvM4!/b/dHUBAAAAAAAA&bo=kADiAAAAAAAFB1Y!&rf=viewer_4"
+               src="/images/avatar.gif"
                alt="ksir" />
           <p class="site-author-name" itemprop="name">ksir</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -509,7 +403,7 @@ console.log(jim.name);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
