@@ -1,0 +1,610 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Node.js学习笔记一
+
+Node.js 是什么
+Node.js 不是一门独立的语言,不是Javascript的框架,不是浏览器的库,Node.js是一个让Javascript运行在服务器的开发平台
+
+Node.js 能做什么
+Javascript是由客户端而产生,Node.js为网络而生
+实现复杂逻辑的网站
+基于社交网络的大WEB的应用
+Web Socket服务器
+TCP/UDP套接字应用程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="'node.js学习笔记一'">
+<meta property="og:url" content="http://yoursite.com/2017/01/01/node-js学习笔记一/index.html">
+<meta property="og:site_name" content="ksir's blog">
+<meta property="og:description" content="Node.js学习笔记一
+
+Node.js 是什么
+Node.js 不是一门独立的语言,不是Javascript的框架,不是浏览器的库,Node.js是一个让Javascript运行在服务器的开发平台
+
+Node.js 能做什么
+Javascript是由客户端而产生,Node.js为网络而生
+实现复杂逻辑的网站
+基于社交网络的大WEB的应用
+Web Socket服务器
+TCP/UDP套接字应用程序">
+<meta property="og:updated_time" content="2017-01-06T04:31:50.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="'node.js学习笔记一'">
+<meta name="twitter:description" content="Node.js学习笔记一
+
+Node.js 是什么
+Node.js 不是一门独立的语言,不是Javascript的框架,不是浏览器的库,Node.js是一个让Javascript运行在服务器的开发平台
+
+Node.js 能做什么
+Javascript是由客户端而产生,Node.js为网络而生
+实现复杂逻辑的网站
+基于社交网络的大WEB的应用
+Web Socket服务器
+TCP/UDP套接字应用程序">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 'node.js学习笔记一' | ksir's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ksir's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                'node.js学习笔记一'
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-01T15:23:00+08:00" content="2017-01-01">
+              2017-01-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 style="text-align: center;">Node.js学习笔记一</h1>
+
+<h4 id="Node-js-是什么"><a href="#Node-js-是什么" class="headerlink" title="Node.js 是什么"></a>Node.js 是什么</h4><blockquote>
+<p>Node.js 不是一门独立的语言,不是Javascript的框架,不是浏览器的库,Node.js是一个让Javascript运行在服务器的开发平台</p>
+</blockquote>
+<h4 id="Node-js-能做什么"><a href="#Node-js-能做什么" class="headerlink" title="Node.js 能做什么"></a>Node.js 能做什么</h4><ul>
+<li>Javascript是由客户端而产生,Node.js为网络而生</li>
+<li>实现复杂逻辑的网站</li>
+<li>基于社交网络的大WEB的应用</li>
+<li>Web Socket服务器</li>
+<li>TCP/UDP套接字应用程序</li>
+<li>命令行工具</li>
+<li><p>交互式终端程序</p>
+<h4 id="异步式I-O与事件驱动"><a href="#异步式I-O与事件驱动" class="headerlink" title="异步式I/O与事件驱动"></a>异步式I/O与事件驱动</h4></li>
+</ul>
+<blockquote>
+<p>Node.js 最大的特点就是采用异步式I/O与事件驱动的架构设计. 对于高并发的解决方案,传统的架构是多线程模式,也就是每个业务逻辑提供一个系统线程,通过系统线程切换来弥补同步式I/O调用时的时间开销. Node.js使用的单线程模式,在执行的过程中会维护一个事件队列,程序在执行时再进入事件循环等待下一个事件的到来</p>
+</blockquote>
+<h4 id="浏览器的引擎拾贝"><a href="#浏览器的引擎拾贝" class="headerlink" title="浏览器的引擎拾贝"></a>浏览器的引擎拾贝</h4><blockquote>
+<p>为什么Ext.js在Chrome浏览器上运行如此快,Chrome浏览器与Node.js浏览器的引擎同为V8<br>传统: 浏览器-&gt;Apache/IIS/Nginx/Tomcat-&gt;php/c#/java/python;  node: 浏览器-&gt;node.js</p>
+</blockquote>
+<h4 id="Node-js环境的安装"><a href="#Node-js环境的安装" class="headerlink" title="Node.js环境的安装"></a>Node.js环境的安装</h4><blockquote>
+<p>打开网址<code>nodjs.org</code>下载对应系统的安装包, 打开命令提示符cmd 输入node -v 查看版本,查看是否安装成功,输入node进入编译模式,执行一段js代码比如<code>console.log(&#39;hello world&#39;)</code>体验一番</p>
+</blockquote>
+<h4 id="Node-js初体验"><a href="#Node-js初体验" class="headerlink" title="Node.js初体验"></a>Node.js初体验</h4><p>使用node.js开启服务</p>
+<p><pre><br>var http = require(‘http’);<br>http.createServer(function(req,res){<br>    res.writeHead(200,{‘Content-Type’:’text/html’});<br>    res.write(‘<h1>hello world!</h1>‘);<br>    res.end(‘<p>我是nodejs服务器</p>‘);<br>}).listen(3000);<br></pre><br>我们可以通过在浏览器打开<code>localhost:3000</code>查看结果</p>
+<blockquote>
+<p>为了方便以后测试, 我们可以安装一个<code>supervisor</code>插件来监听我们的代码调试</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/01/正则表达式/" rel="next" title="'正则表达式'">
+                <i class="fa fa-chevron-left"></i> '正则表达式'
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/04/node-js学习笔记二/" rel="prev" title="'node.js学习笔记二'">
+                'node.js学习笔记二' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ksir" />
+          <p class="site-author-name" itemprop="name">ksir</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Node.js学习笔记一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js-是什么"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Node.js 是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js-能做什么"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Node.js 能做什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步式I-O与事件驱动"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">异步式I/O与事件驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器的引擎拾贝"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">浏览器的引擎拾贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js环境的安装"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">Node.js环境的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js初体验"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">Node.js初体验</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">hello world!</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ksir</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

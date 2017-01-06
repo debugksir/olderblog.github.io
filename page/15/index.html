@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/20/盒子居中的几种方式/" itemprop="url">
-                  盒子居中的几种方式
+                <a class="post-title-link" href="/2016/01/11/CSS-hack/" itemprop="url">
+                  CSS hack
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-20T21:06:24+08:00" content="2015-12-20">
-              2015-12-20
+            <time itemprop="dateCreated" datetime="2016-01-11T19:03:14+08:00" content="2016-01-11">
+              2016-01-11
             </time>
           </span>
 
@@ -274,162 +274,58 @@
       
         
           
-            <h2 id="几种盒子居中方式"><a href="#几种盒子居中方式" class="headerlink" title="几种盒子居中方式"></a>几种盒子居中方式</h2><blockquote>
-<p>.father代表父盒子,.child代表子盒子</p>
+            <h2 id="css-hack-概念"><a href="#css-hack-概念" class="headerlink" title="css hack 概念"></a>css hack 概念</h2><blockquote>
+<p>由于不同厂商的流览器或某浏览器的不同版本（如IE6-IE11,Firefox/Safari/Opera/Chrome等），对CSS的支持、解析不一样，导致在不同浏览器的环境中呈现出不一致的页面展现效果。这时，我们为了获得统一的页面效果，就需要针对不同的浏览器或不同版本写特定的CSS样式，我们把这个针对不同的浏览器/不同版本写相应的CSS code的过程，叫做CSS hack!</p>
 </blockquote>
-<ul>
-<li><p>方式一</p>
-<pre>
-.father
-{
-  position: relative;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
-}
-.child
-{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
-  margin: auto;
-  background-color: #333;
-}
-</pre>
-</li>
-<li><p>方式二</p>
-<pre>
-.father
-{
-  display: flex;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
-}
-.child
-{
-  width: 300px;
-  height: 300px;
-  margin: auto;
-  background-color: #333;
-}
-</pre>
-</li>
-<li><p>方式三 </p>
-<pre>
-.father
-{
-  position: relative;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
-}
-.child
-{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  margin: -150px 0 0 -150px;
-  background-color: #333;
-}
-</pre>
-</li>
-<li><p>方式四 </p>
-<pre>
-.father
-{
-  position: relative;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
-}
-.child
-{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  transform: translate(-50%,-50%);
-  background-color: #333;
-}
-</pre>
-</li>
-<li><p>方式五</p>
-<pre>
-.father
-{
-  width: 500px;
-  height: 500px;
-  text-align: center;
-  background-color: pink;
-}
-.father:after
-{
-  display: inline-block;
-  height: 100%;
-  content: '';
-  vertical-align: middle;
-}
-.child
-{
-  display: inline-block;
-  width: 300px;
-  height: 300px;
-  vertical-align: middle;
-  background-color: #333;
-}
-</pre>
-</li>
-<li><p>方式六</p>
-<pre>
-.father
-{
-  display: flex;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
-  justify-content: center;
-  align-items: center;
-}
-.child
-{
-  display: table-cell;
-  width: 300px;
-  height: 300px;
-  background-color: #333;
-}
-</pre>
-</li>
-<li><p>方式七 (内容写在child盒子中)</p>
-<pre>
-.father
-{
-  display: table;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
-}
-.child
-{
-  display: table-cell;
-  width: 300px;
-  height: 300px;
-  text-align: center;
-  vertical-align: middle;
-}
-</pre>
-
-
-
-</li>
+<h2 id="css-hack-分类"><a href="#css-hack-分类" class="headerlink" title="css hack 分类"></a>css hack 分类</h2><ul>
+<li>属性前缀法(即类内部Hack)：例如 IE6能识别下划线”<em>“和星号” <em> “，IE7能识别星号” </em> “，但不能识别下划线”</em>“，IE6~IE10都认识”\9”，但firefox前述三个都不能认识。</li>
+<li>选择器前缀法(即选择器Hack)：例如 IE6能识别<em>html .class{}，IE7能识别</em>+html .class{}或者*:first-child+html .class{}。</li>
+<li>IE条件注释法(即HTML条件注释Hack)：针对所有IE(注：IE10+已经不再支持条件注释)： <!--[if IE]>IE浏览器显示的内容 <![endif]-->，针对IE6及以下版本： <!--[if lt IE 6]>只在IE6-显示的内容 <![endif]-->。这类Hack不仅对CSS生效，对写在判断语句里面的所有代码都会生效。</li>
 </ul>
+<h4 id="条件注释法"><a href="#条件注释法" class="headerlink" title="条件注释法"></a>条件注释法</h4><pre>
+    只在IE下生效
+    <!--[if IE]>
+    这段文字只在IE浏览器显示
+    <![endif]-->
+
+    只在IE6下生效
+    <!--[if IE 6]>
+    这段文字只在IE6浏览器显示
+    <![endif]-->
+
+    只在IE6以上版本生效
+    <!--[if gte IE 6]>
+    这段文字只在IE6以上(包括)版本IE浏览器显示
+    <![endif]-->
+
+    只在IE8上不生效
+    <!--[if ! IE 8]>
+    这段文字在非IE8浏览器显示
+    <![endif]-->
+
+    非IE浏览器生效
+    <!--[if !IE]>
+    这段文字只在非IE浏览器显示
+    <![endif]-->
+</pre>
+
+<h4 id="类内属性前缀法"><a href="#类内属性前缀法" class="headerlink" title="类内属性前缀法"></a>类内属性前缀法</h4><ul>
+<li>“-″减号是IE6专有的hack</li>
+<li>“\9″ IE6/IE7/IE8/IE9/IE10都生效</li>
+<li>“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack</li>
+<li>“\9\0″ 只对IE9/IE10生效，是IE9/10的hack</li>
+<li><em>html </em>前缀只对IE6生效</li>
+<li><em>+html </em>+前缀只对IE7生效</li>
+<li>@media screen\9{…}只对IE6/7生效</li>
+<li>@media \0screen {body { background: red; }}只对IE8有效</li>
+<li>@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效</li>
+<li>@media screen\0 {body { background: green; }} 只对IE8/9/10有效</li>
+<li>@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效</li>
+<li>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body - { background: orange; }} 只对IE10有效- </li>
+</ul>
+<h4 id="css-hack-利弊"><a href="#css-hack-利弊" class="headerlink" title="css hack 利弊"></a>css hack 利弊</h4><blockquote>
+<p>一般情况下，我们尽量避免使用CSS hack，但是有些情况为了顾及用户体验实现向下兼容，不得已才使用hack。比如由于IE8及以下版本不支持CSS3,而我们的项目页面使用了大量CSS3新属性在IE9/Firefox/Chrome下正常渲染，这种情况下如果不使用css3pie或htc或条件注释等方法时,可能就得让IE8-的专属hack出马了。使用hack虽然对页面表现的一致性有好处，但过多的滥用会造成html文档混乱不堪，增加管理和维护的负担。相信只要大家一起努力，少用、慎用hack，未来一定会促使浏览器厂商的标准越来越趋于统一，顺利过渡到标准浏览器的主流时代。抛弃那些陈旧的IE hack，必将减轻我们编码的复杂度，少做无用功。一般情况下，我们尽量避免使用CSS hack，但是有些情况为了顾及用户体验实现向下兼容，不得已才使用hack。比如由于IE8及以下版本不支持CSS3,而我们的项目页面使用了大量CSS3新属性在IE9/Firefox/Chrome下正常渲染，这种情况下如果不使用css3pie或htc或条件注释等方法时,可能就得让IE8-的专属hack出马了。使用hack虽然对页面表现的一致性有好处，但过多的滥用会造成html文档混乱不堪，增加管理和维护的负担。相信只要大家一起努力，少用、慎用hack，未来一定会促使浏览器厂商的标准越来越趋于统一，顺利过渡到标准浏览器的主流时代。抛弃那些陈旧的IE hack，必将减轻我们编码的复杂度，少做无用功。</p>
+</blockquote>
 
           
         
@@ -462,7 +358,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -503,7 +399,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -550,7 +446,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

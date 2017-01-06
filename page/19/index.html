@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/11/13/Javascript数据类型/" itemprop="url">
-                  Javascript数据类型
+                <a class="post-title-link" href="/2016/01/03/Javascript面向对象篇-1/" itemprop="url">
+                  Javascript面向对象篇 1
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-13T19:57:32+08:00" content="2015-11-13">
-              2015-11-13
+            <time itemprop="dateCreated" datetime="2016-01-03T19:58:35+08:00" content="2016-01-03">
+              2016-01-03
             </time>
           </span>
 
@@ -274,168 +274,167 @@
       
         
           
-            <h2 id="5种数据类型："><a href="#5种数据类型：" class="headerlink" title="5种数据类型："></a>5种数据类型：</h2><ul>
-<li><p>基本数据类型：Undefined、Null、Boolean、Number、String</p>
-<ol>
-<li>基本类型值是指简单的数据段，5种基本类型是按值访问的，因为可以操作保存在变量中的实际值</li>
-<li>基本类型的值在内存中占据固定大小的空间，被保存在栈内存中。从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</li>
-<li>不能给基本类型的值添加属性</li>
-</ol>
-</li>
-<li><p>引用数据类型：Object</p>
-<ol>
-<li>引用类型值是指那些可以由多个值构成的对象。js不允许直接访问内存中的位置，也就是不能直接访问操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。</li>
-<li>引用类型的值是对象，保存在堆内存中，包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</li>
-<li>对于引用类型的值，可以为其添加属性和方法，也可以改变和删除其属性和方法</li>
-</ol>
-</li>
-<li><p>Undefined</p>
-<ol>
-<li>Undefined类型只有一个值，就是undefined</li>
-<li>var a &lt;=&gt; var a = undefined;   </li>
-<li>对于尚未声明过的变量，只能执行一项操作，就是使用typeof操作符检测其数据类型【但在严格模式下会导致错误】</li>
-<li>出现场景：<ul>
-<li>已声明未赋值的变量</li>
-<li>获取对象不存在的属性</li>
-<li>无返回值的函数的执行结果</li>
-<li>函数的参数没有传入</li>
-<li>void(expression)</li>
+            <h2 id="表达式的概念"><a href="#表达式的概念" class="headerlink" title="表达式的概念"></a>表达式的概念</h2><ul>
+<li>广义的概念:所有返回的一段代码块,都可以成为表达式.比如:<pre>
+var a=0;
+var a, b;
+</pre></li>
+<li>a = 0;这个表达式的返回值为0;</li>
+<li>b = a;这个表达式的返回值为a;</li>
+<li>赋值表达式的返回值为=右边的值;</li>
 </ul>
+<h2 id="面向对象的概念"><a href="#面向对象的概念" class="headerlink" title="面向对象的概念:"></a>面向对象的概念:</h2><ul>
+<li><p>一种编程思想.核心:在解决任何问题的时候,首先试图去找到一个对象来帮助解决问题.</p>
 </li>
-<li>类型转换<ul>
-<li>Boolean(undefined)：false</li>
-<li>Number(undefined):NaN</li>
-<li>String(undefined):’undefined’</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Null</p>
-<ol>
-<li>Null类型只有一个值，就是null,逻辑角度看，null值表示一个空对象指针</li>
-<li>如果定义的变量将用于保存对象，最好将该变量初始化为null</li>
-<li>实际上undefined值是派生自null值的，所以undefined == null</li>
-<li>出现场景：对象不存在时</li>
-<li>类型转换<ul>
-<li>Boolean(null)：false</li>
-<li>Number(null):0</li>
-<li>String(null):’null’       <blockquote>
-<p>注意:null是空对象指针，而[]是空数组，{}是空对象，三者不相同<br>注意null不能添加自定义属性</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Boolean</p>
-<ol>
-<li>Boolean类型只有两个值：true 和 false<br>2.出现场景：<ul>
-<li>条件语句导致系统执行的隐士类型转换</li>
-<li>字面量或变量定义</li>
-</ul>
-</li>
-<li>类型转换<ul>
-<li>Number(true): 1 || Number(false) : 0</li>
-<li>String(true):’true’ || String(false):’false’</li>
-</ul>
-</li>
-<li>Boolean()<ul>
-<li>Boolean(undefined):false</li>
-<li>Boolean(null):false</li>
-<li>Boolean(非空对象包括空数组[]和空对象{}):true</li>
-<li>Boolean(非0): true || Boolean(0和NaN):false</li>
-<li>Boolean(非空包括空格字符串):true || Boolean(‘’):false<blockquote>
-<p>[注意]true不一定等于1,false也不一定等于0</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Number</p>
-<ol>
-<li>Number类型使用IEEE754格式来表示整数和浮点数值<blockquote>
-<p>注意:可以用一个值-0来将其转换成一个数字</p>
-</blockquote>
-</li>
-<li>三种字面量格式是十进制、八进制、十六进制<ul>
-<li>八进制字面值的第一位必须是0，然后是八进制数字序列(0-7),如果字面值中的数值超出了范围，那么前导0将被忽略，后面的数值被当作十进制数解析</li>
-<li>八进制字面量在严格模式下是无效的，会导致js抛出错误</li>
-<li>十六进制字面值的前两位必须是0x,后跟十六进制数字序列，字母可大写可小写</li>
-<li>十六进制中字面值中的数值走出范围，如出现g,h等会报错</li>
-<li>在进行算术计算时，所有以八进制和十六进制表示的数值最终都将被转换成十进制数值</li>
-</ul>
-</li>
-<li>数值表示：<ul>
-<li>js中可以保存正0和负0，且被认为相等</li>
-<li>浮点数值：该数值中必须包含一个小数点，并且小数点后面必须至少有一位数字。<ol>
-<li>由于浮点型数值需要的内存空间是保存整数值的两倍，因此js会不失时机地将浮点数值转换成整数值，若小数点后没有跟任何数字或者浮点值本身表示的就是一个整数，这个数值会作为整数值来保存。</li>
-<li>浮点数值的最高精度是17位小数</li>
-<li>对于极大或者极小的数，可以用科学计数法e来表示的浮点数值来表示</li>
-<li>默认情况下，js会将小数点后面带有6个0以上的浮点数值转换为以e表示法表示的数值</li>
-<li>基于IEEE754数值的浮点计算的通病是舍入误差的问题。如：0.1+0.2 === 0.3(15个0)4</li>
-</ol>
-</li>
-<li>js中的数值范围是Number.MIN_VALUE(5e-324) ―― Number.MAX_VALUE(1.7976931348623157e+308)<ol>
-<li>如果超出正数范围，输出Infinity(正无穷大)，超出负数范围，输出-Infinity(负无穷大)</li>
-<li>+-Infinity不能参与数值计算</li>
-<li>Number.MAX_VALUE+1 != Infinity,因为计算机最多保存52位尾数位，保存不了1000多位，早就失去精度，即小数位全为0，所以相加不变</li>
-<li>Number.MIN_VALUE - 1 != -Infinity,也是同样的原因，所以结果为-1</li>
-<li>可以用isFinite()来确定一个数值是不是有穷的,包含着隐式类型转换Number()</li>
-<li>isFinite(NaN) //false</li>
-</ol>
-</li>
-<li>NaN<ol>
-<li>NaN与任何值都不相等，包括NaN本身</li>
-<li>任何涉及NaN的操作都会返回NaN</li>
-<li>isNaN()来判断这个数字是不是NaN,包含着隐式类型转换Number()</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>数值转换:Number()可用于任何类型，parseInt()和parseFloat专门用于把字符串转换成数值</p>
+<li><p>优点:</p>
 <blockquote>
-<p>注意:Number()、parseInt()、parseFloat()可以接受各种进制的数字，但对于含数字的字符串并不适用<br>注意: Number()、parseInt()、parseFloat()中数字为1.2. 会报错，但字符串为’1.2.’则不会报错</p>
+<ol>
+<li>身份:调度者;</li>
+<li>代码的灵活度高;</li>
+<li>可维护性高;</li>
+<li>可扩展性高;</li>
+</ol>
 </blockquote>
-<ol>
-<li><p>Number()</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Number(true):1 || Number(false):0</div><div class="line">Number(各种进制的数字)：运算后的十进制的数字，如1.0或1.或01会以1输出</div><div class="line">Number(undefined):NaN</div><div class="line">Number(null):0</div><div class="line">Number(字符串)：</div><div class="line">Number(只包含数字的十进制和十六进制的字符串)：运算后的十进制的数字</div><div class="line">[注意]字符串中不识别八进制，按照十进制数字处理</div><div class="line">Number(&apos;&apos;和&apos; &apos;):0</div><div class="line">Number(其他情况的字符串):NaN</div><div class="line">Number(对象)：</div><div class="line">Number([]和[0]和[-0]):0</div><div class="line">Number([数字])：运算后的数字</div><div class="line">Number([1,2]和&#123;&#125;和其他对象):NaN</div></pre></td></tr></table></figure>
 </li>
+<li><p>缺点:</p>
+<blockquote>
+<ol>
+<li>可能造成代码的复杂度提高</li>
+<li>可读性相对不好</li>
 </ol>
+</blockquote>
 </li>
 </ul>
-</li>
+<h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程:"></a>面向过程:</h2><ul>
+<li>身份: 执行者</li>
+<li>顺序: 一般情况下不能打乱,从上至下一步一步执行.</li>
 </ul>
-<pre><code>2. parseInt()：在转换字符串时，会忽略字符串前面的空格，直到找到第一个非空格字符。如果第一个字符不是数字字符或者负号，parseInt()就会返回NaN。如果是，则继续解析，直到解析完成或者遇到非数字字符。
-    - parseInt()可以识别出各种进制的整数,但在解析八进制字面量的字符串，ECMAScript3会解析八进制，但ECMAScript5没有解析八进制的能力
-    - parseInt()函数提供第二个参数，表示多少进制，如：parseInt(&apos;123&apos;,16或10或2)
-    - parseInt(各种进制的数字)：运算后的十进制的数字，如1.0或1.或01会以1输出
-    - 因为parseInt()是专门用来处理字符串转换数字的，所以parseInt(其他类型包括&apos;&apos;)//NaN
-3. parseFloat():类似于parseInt()，会忽略字符串前面的空格，直到找到第一个非空格字符
-    - parseFloat()只能解析十进制字符串
-    - parseFloat(各种进制的数字)：运算后的十进制的数字，如1.0或1.或01会以1输出
-</code></pre><ul>
-<li><p>String:由单引号或双引号括起来的字符序列,任何字符串的长度都可以通过访问length属性获得</p>
-<ol>
-<li><p>字符字面量，也叫转义序列</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\n 换行</div><div class="line">\t 制表</div><div class="line">\b 空格</div><div class="line">\r 回车</div><div class="line">\f 进纸</div><div class="line">\\ 斜杠</div><div class="line">\&apos; 单引号</div><div class="line">\&quot; 双引号</div><div class="line">\xnn 以十六进制nn表示一个字符(n为0-f)，如\x41表示&apos;A&apos;</div><div class="line">\unnnn 以十六进制nnnn表示一个Unicode字符(n为0-f)，如\u03a3表示希腊字符ε</div></pre></td></tr></table></figure>
-</li>
-<li><p>ECMAScript中的字符串是不可变的   </p>
-</li>
-<li>字符串连接需要先创建一个新字符串，然后在新字符串中填充两个需要拼接的字符串，最后再销毁原来的字符串。这个过程在后台发生，也是在某些旧版本浏览器(IE6)拼接字符串速度慢的原因，但后来已经解决了这个低效率问题</li>
-<li><p>字符串转换</p>
+<h2 id="javascript语言的特点"><a href="#javascript语言的特点" class="headerlink" title="javascript语言的特点:"></a>javascript语言的特点:</h2><ul>
+<li>弱类型</li>
+<li>多范式</li>
+<li>基于对象的语言:在js中,一切都是对象</li>
+<li>基于原形的语言</li>
+</ul>
+<h2 id="原型的概念"><a href="#原型的概念" class="headerlink" title="原型的概念"></a>原型的概念</h2><p><code>所谓原型形就是一个函数的prototype属性所引用的对象</code></p>
 <ul>
-<li>toString()<br>  Null和Undefined没有该方法<br>  Boolean、Object、String有该方法<br>  Number使用该方法可以传递基数2、8、10、16,如var num = 10;num.toString(2);//1010<br>  但10.toString(2)会报错,因为数字后面不能跟标识符</li>
-<li>String()<br>  有toString()方法，使用toString()方法<br>  String(null);//‘null’<br>  String(undefined);//‘undefined’   </li>
-<li>要把某个值转换为字符串，可以使用加号操作符把它与一个空字符串’’加在一起</li>
+<li>只要声明一个函数,那么原型就存在<pre>
+function foo(){};
+foo.prototype['name']='ksir';
+var f = new foo();
+console.log(f.constructor ===foo.prototype.constructor);
+</pre></li>
+<li>当通过该函数创建出来的每一个对象,都共享此原型,也就是说上述创建出来的所有对象可以直接访问到原型上的任何成员(属性和方法);<br>(对象的动态特性就是对象可以同过<code>.</code>或者<code>[]</code>来动态创建对象);</li>
 </ul>
+<h2 id="原型的本质"><a href="#原型的本质" class="headerlink" title="原型的本质"></a>原型的本质</h2><ul>
+<li>原型的本质就是对象</li>
+</ul>
+<pre>
+function Person(name,age,gender){
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.talk = function(){
+        console.log('hello');
+     }
+ }
+ var kangfeng = new Person('康峰',21,'男');
+ var xiaoming = new Person('小明',20,'女');
+ var xiaohong = new Person('小红','19','女');
+
+ kangfeng.talk();
+ xiaoming.talk();
+ xiaohong.talk();
+ //思考:这三个儿女的talk方法是否一样?
+ console.log(xiaoming.talk === kangfeng.talk);
+ console.log(xiaohong.talk === xiaohong.talk):
+ //这三个对象的方法是不一样,相互独立的
+ Person.prototype.addfu(){
+    console.log('给原型添加一个函数');
+}
+</pre>
+
+<ul>
+<li><p>在构造函数中存在相同的逻辑代码,然后再创建对象的时候,会拷贝该函数中的代码逻辑,把构造函数内的方法提取出来放在一个公共的地方,这个公共的地方是该构造函数创建出来的对象都能访问,–构造函数的所有对象能够共享构造函数的原型</p>
 </li>
-<li><p>如果数组中的某一项的值是null或者undefined，那么该值在join()、toLocaleString()、toString()和valueOf()方法返回的结果中以空字符串表示<br>最后给大家一个简单的例子说明下这五种基本类型的不同</p>
+<li><p>有点:实现同类对象的数据共享</p>
 </li>
-</ol>
-</li>
+</ul>
+<h2 id="获取原型的方式"><a href="#获取原型的方式" class="headerlink" title="获取原型的方式"></a>获取原型的方式</h2><ul>
+<li>通过函数:</li>
+</ul>
+<p><code>&lt;fnName&gt;.prototype;</code></p>
+<ul>
+<li>通过对象:</li>
+</ul>
+<pre>
+object.__proto__;
+//两个下划线
+</pre>
+
+<h2 id="对象的组成部分"><a href="#对象的组成部分" class="headerlink" title="对象的组成部分"></a>对象的组成部分</h2><p><code>对象本身;他的原型</code></p>
+<ul>
+<li>每一个对象都有<code>__proto__</code>属性,也就是说每一个对象都有原型</li>
+<li><code>Math.__proto__===object.prototype;</code></li>
+</ul>
+<h2 id="对象的类型就是构造函数的名字"><a href="#对象的类型就是构造函数的名字" class="headerlink" title="对象的类型就是构造函数的名字"></a>对象的类型就是构造函数的名字</h2><h2 id="原型属性-amp-原型对象"><a href="#原型属性-amp-原型对象" class="headerlink" title="原型属性&amp;原型对象"></a>原型属性&amp;原型对象</h2><ul>
+<li>原型属性:站在函数的角度,原型可以被称为该函数的原型属性</li>
+<li>原型对象:站在对象的角度,原型可以被称为该对象的原型对象</li>
+</ul>
+<h2 id="proto-这种双下划线的标准不是w3c的标准-这些属性都是非标准属性-有兼容性问题"><a href="#proto-这种双下划线的标准不是w3c的标准-这些属性都是非标准属性-有兼容性问题" class="headerlink" title="__proto__这种双下划线的标准不是w3c的标准,这些属性都是非标准属性,有兼容性问题"></a><code>__proto__</code>这种双下划线的标准不是w3c的标准,这些属性都是非标准属性,有兼容性问题</h2><ul>
+<li>如果我们无法通过通过双下划线获取原型属性的时候,我们就得通过函数来获取它</li>
+</ul>
+<pre>
+function getPrototype(obj){
+    //判断浏览器是否兼容__proto__属性
+    //return !!obj.__proto__? obj.__proto__:obj.constructor.prototype;
+    if(obj.__proto__){
+    //支持
+        return obj.__proto__;
+    }else{
+        //获取该对象的构造函数
+        //在通过此函数的prototype属性获取其原型对象
+        return obj.constructor.prototype;
+    }
+}
+
+function A(){};
+var a = A();
+console.log(getPrototype(a).constructor);
+//如果我们的函数中有if else return结构,我们可以用3元运算符来优化.
+
+</pre>
+
+<h2 id="标准构造函数的写法"><a href="#标准构造函数的写法" class="headerlink" title="标准构造函数的写法"></a>标准构造函数的写法</h2><pre>
+//哪些属性要保存在构造函数的内部,哪些属性需要提取出来放放原型上
+
+function B(name){};
+B.prototype.name = 'tom';
+var tom = new B;
+console.log(tome.name);
+var jim = new jim;
+console.log(jim.name);
+//结果都是tom
+//所以和具体某个对象息息相关的称为私有属性,这写属性都必须写在构造函数内,那些共享的属性(每个对象都具有的属性,不会随对象变化而变化,比如说一些方法(对象的行为)--公有属性)就可以定义在原型属性中.
+//一般情况下,构造函数的方法放原型上
+//不提倡在js原生对象上进行扩展成员
+//坏处,会导致原生对象过于庞大,累赘,影响性能
+</pre>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>给构造函数添加方法一般添加在原型上,为了方便,一般将方法以对象的形式添加到 &lt;构造函数名&gt;.prototype{}里面,同时,不要忘了添加<code>constructor: 构造函数名</code> 键值对</li>
+</ul>
+<h2 id="原型的特性"><a href="#原型的特性" class="headerlink" title="原型的特性"></a>原型的特性</h2><h3 id="动态性"><a href="#动态性" class="headerlink" title="动态性:"></a>动态性:</h3><ul>
+<li>给原型扩展成员会直接反应到已创建的对象身上</li>
+<li>替换原型对象,不会反应到已创建出来的对象,但是会直接影响之后创建出来的对象</li>
+</ul>
+<h3 id="唯一性"><a href="#唯一性" class="headerlink" title="唯一性"></a>唯一性</h3><ul>
+<li>由同一函数创建出来的所有对象,共享同一个原型对象</li>
+</ul>
+<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性:"></a>不可变性:</h3><ul>
+<li>对象是无法改变原型对象上的任何成员</li>
+</ul>
+<h3 id="继承性"><a href="#继承性" class="headerlink" title="继承性:"></a>继承性:</h3><ul>
+<li>所有对象都继承自它的原型对象</li>
 </ul>
 
           
@@ -469,7 +468,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -510,7 +509,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -557,7 +556,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/13/函数的四种调用模式/" itemprop="url">
-                  函数的四种调用模式
+                <a class="post-title-link" href="/2017/01/04/node-js学习笔记二/" itemprop="url">
+                  'node.js学习笔记二'
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-13T11:52:29+08:00" content="2016-03-13">
-              2016-03-13
+            <time itemprop="dateCreated" datetime="2017-01-04T10:22:02+08:00" content="2017-01-04">
+              2017-01-04
             </time>
           </span>
 
@@ -274,57 +274,53 @@
       
         
           
-            <h2 id="函数的四种调用模式"><a href="#函数的四种调用模式" class="headerlink" title="函数的四种调用模式"></a>函数的四种调用模式</h2><ul>
-<li>普通函数执行 this=&gt;window (声明一个函数后就直接调用)</li>
+            <h1 style="text-align: center;">Node.js同步与异步</h1>
+
+<blockquote>
+<p>Node.js最大的特性就是异步式I/O与事件紧密结合的编程模式。这种模式与传统的同步式IO线性的编程思路有很大的不同，因为控制流很大程度上要靠事件和回调函数来组织，一个逻辑要拆分为若干个单元格。</p>
+</blockquote>
+<h2 id="内容：阻塞和线程"><a href="#内容：阻塞和线程" class="headerlink" title="内容：阻塞和线程"></a>内容：阻塞和线程</h2><ol>
+<li>同步式I/O或阻塞式I/O</li>
+</ol>
+<blockquote>
+<p>线程在执行中如果遇到磁盘读写或网络通信，通常要耗费较长时间。这时操作系统会剥夺这个线程的CPU控制权，使其暂停执行，同时将资源让给其他的工作线程，这种线程调度方式成为阻塞，当I/O操作完毕时，操作系统将这个线程的阻塞状态解除，恢复其对CPU的控制权、令其继续执行。</p>
+</blockquote>
+<ol>
+<li>异步式I/O或非阻塞式I/O</li>
+</ol>
+<blockquote>
+<p>针对所有I/O操作不采用阻塞策略，当线程遇到I/O操作时，不会以阻塞的方式等待I/O操作的完成或数据的返回，而只是讲IO请求发送给操作系统，继续执行下一条语句，当操作系统完成IO操作时，以事件的形式通知执行IO操作的线程，线程会在特定时候处理这个事件，为了 处理异步IO，线程必须有事件循环，不断的检查有没有未处理的事件，依次予以处理。</p>
+</blockquote>
+<ol>
+<li>非阻塞与阻塞模式区别</li>
+</ol>
+<blockquote>
+<p>非阻塞模式下，一个线程永远在执行计算操作，这个线程所使用的CPU核心利用率永远是100%，IO以事件的方式通知。<br>阻塞模式下，多线程往往能提高系统吞吐量，因为一个线程阻塞还有其他线程在工作，多线程可以让CPU资源不被阻塞中的线程浪费。<br>调度：当前一个工作,在5分钟之后执行</p>
+</blockquote>
+<ol>
+<li>同步式IO与异步式IO区别</li>
+</ol>
+<ul>
+<li><p>同步式IO(阻塞式)</p>
+<ul>
+<li>利用多线程提供吞吐量</li>
+<li>通过事件片分割和线程调度利用多核CPU</li>
+<li>需要由操作系统调度多线程使用多核CPU</li>
+<li>难以充分利用CPU资源</li>
+<li>内存轨迹大,数据局部性弱</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    console.log(1);</div><div class="line">    console.log(this === window);</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
-<ul>
-<li>方法调用 this=&gt;该方法的调用者 (通过一个对象来调用方法)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">    sayHi: function()&#123;</div><div class="line">        console.log(&apos;hello,ksir.&apos;);</div><div class="line">        console.log(this === obj);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">obj.sayHi();</div></pre></td></tr></table></figure>
-<ul>
-<li>构造函数模式 this=&gt;当前要创建出来的实例(对象) (配合new操作符来调用函数) </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn(name)&#123;</div><div class="line">    this.name = name;</div><div class="line">    console.log(this);</div><div class="line">&#125;</div><div class="line">var ksir = new fn(&apos;ksir&apos;);</div></pre></td></tr></table></figure>
-<ul>
-<li><p>call/apply模式(上下文模式)</p>
-<ul>
-<li>this=&gt;使用动态指定的 (指定call 或者 apply 方法的第一个参数)</li>
-<li>区别:</li>
-<li>call 的参数大于等于2 , 第一个以后的为实参列表</li>
-<li><p>apply 的参数只有两个,第二个是实参数组</p>
 </li>
-<li><p>注意:在非严格模式下,如果thisObj 赋值为null或者不传实参,此时this-&gt;window对象,就相当于普通函数执行模式</p>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//只有函数对象才有call和apply方法</div><div class="line">//&lt;fn&gt;.call()</div><div class="line">//动态指定某方法或函数执行时内部this指向</div><div class="line">//A:&lt;fn&gt;.call(thisObj,arg1,arg2,...argN)</div><div class="line">//thisObj: 是fn在执行时this指向</div><div class="line">//arg1,arg2,...,argN: 是fn在执行时传入的实参列表</div><div class="line"></div><div class="line"></div><div class="line">function fn(name,age,gender)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.gender = gender;</div><div class="line">    console.log(this);</div><div class="line">&#125;</div><div class="line">var ksir = new fn(&apos;ksir&apos;);</div><div class="line">var o = &#123;&#125;;</div><div class="line">fn.call(o,&apos;o&apos;,18,&apos;man&apos;);</div><div class="line">console.log(o.name);</div><div class="line">console.log(Function.prototype);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//B:&lt;fn&gt;.apply(thisObj,[fn实参])</div><div class="line">function foo(name,age,gender)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.gender = gender;</div><div class="line">&#125;</div><div class="line">var ksir = &#123;&#125;;</div><div class="line">foo.apply(ksir,[&apos;ksir&apos;,21,&apos;男&apos;]);</div><div class="line">console.log(ksir.name);</div><div class="line">console.log(ksir.age);</div><div class="line">console.log(ksir.gender);</div></pre></td></tr></table></figure>
-<h2 id="上下文模式的应用"><a href="#上下文模式的应用" class="headerlink" title="上下文模式的应用"></a>上下文模式的应用</h2><ul>
-<li>数组合并</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var arr1 = [1,2,3];</div><div class="line">var arr2 = [4,5,6];</div><div class="line">//数组合并,将arr2上的元素合并到arr1中</div><div class="line">//方法一</div><div class="line">for(var i,l = arr2.length; i&lt;l;i++)&#123;</div><div class="line">    arr1.push(arr2[i]);</div><div class="line">&#125;</div><div class="line">console.log(arr1);</div><div class="line"></div><div class="line">//方法二</div><div class="line">var new arr = arr1.concat(arr2);</div><div class="line"></div><div class="line">//方法三</div><div class="line">arr1.push.apply(arr1,arr2);</div><div class="line">//[].push.apply(arr1,arr2);</div><div class="line">//</div><div class="line">Array.prototype.push.apply(arr1,arr2);</div><div class="line">console.log(arr1);</div><div class="line">console.log(arr1);</div></pre></td></tr></table></figure>
+<li><p>异步式IO(非阻塞)</p>
 <ul>
-<li>借调方法(函数)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function parent(name,age,gender)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.gender = gender;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function child(name,age,gender,address)&#123;</div><div class="line">    //对象冒充方法</div><div class="line">    //this.parent = parent;</div><div class="line">    //this.parent(name,age,gender);</div><div class="line">    //this.address = address;</div><div class="line">    //delete this.parent;</div><div class="line">    </div><div class="line">    parent.call(this,name,age,gender);</div><div class="line">    this.address = address;</div><div class="line">&#125;d</div><div class="line"></div><div class="line">var ksir = new child(&apos;ksir&apos;,21,&apos;man&apos;,&apos;hunan&apos;);</div><div class="line">console.log(c);</div></pre></td></tr></table></figure>
-<ul>
-<li><p>数组去重</p>
-<ul>
-<li>实现思路:<ul>
-<li>声明一个函数实现数组去重,取名为unique;</li>
-<li>判断浏览器是否支持数组的indexOf方法</li>
-<li>如果不支持,就实现数组的indexOf方法,并且将其扩展到数组的原型对象上</li>
-<li>遍历数组,首先判断结果数组ret中是否含有当前遍历到的元素</li>
-<li>如果没有,就将当前元素添加到ret中</li>
-<li>循环结束,将ret返回</li>
+<li>单线程即可实现高吞吐量</li>
+<li>通过功能划分利用多核</li>
+<li>可以将单线程绑定到单核CPU</li>
+<li>可以充分利用CPU资源</li>
+<li>内存轨迹小,数据局部性强</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    getName = function() &#123; alert(1);&#125;;</div><div class="line">    return this;</div><div class="line">&#125;</div><div class="line">foo.getName = function() &#123; alert(2);&#125;;</div><div class="line">foo.prototype.getName = function() &#123; alert(3); &#125;;</div><div class="line">var getName = function()&#123; alert(4);&#125;;</div><div class="line">function getName() &#123; alert(5); &#125;</div><div class="line"></div><div class="line">foo.getName();</div><div class="line">getName();</div><div class="line">foo().getName();</div><div class="line">getName();</div><div class="line">new foo.getName();</div><div class="line">new foo().getName();</div><div class="line">new new f00().getName();</div></pre></td></tr></table></figure>
+<p><code>资源出处 silvercell的博客  感谢</code> </p>
 
           
         
@@ -357,7 +353,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -398,7 +394,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -445,7 +441,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

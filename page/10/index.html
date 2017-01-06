@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/11/CSS-hack/" itemprop="url">
-                  CSS hack
+                <a class="post-title-link" href="/2016/01/23/git笔记/" itemprop="url">
+                  git笔记
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-11T19:03:14+08:00" content="2016-01-11">
-              2016-01-11
+            <time itemprop="dateCreated" datetime="2016-01-23T20:01:13+08:00" content="2016-01-23">
+              2016-01-23
             </time>
           </span>
 
@@ -274,58 +274,59 @@
       
         
           
-            <h2 id="css-hack-概念"><a href="#css-hack-概念" class="headerlink" title="css hack 概念"></a>css hack 概念</h2><blockquote>
-<p>由于不同厂商的流览器或某浏览器的不同版本（如IE6-IE11,Firefox/Safari/Opera/Chrome等），对CSS的支持、解析不一样，导致在不同浏览器的环境中呈现出不一致的页面展现效果。这时，我们为了获得统一的页面效果，就需要针对不同的浏览器或不同版本写特定的CSS样式，我们把这个针对不同的浏览器/不同版本写相应的CSS code的过程，叫做CSS hack!</p>
+            <h2 id="git-帮我们解决了三个主要问题"><a href="#git-帮我们解决了三个主要问题" class="headerlink" title="git 帮我们解决了三个主要问题"></a>git 帮我们解决了三个主要问题</h2><ul>
+<li>版本管理git add -&gt; git commit = 新版本</li>
+<li><p>多任务开发(分支) 一个分支代表一个任务,分支之间不相互影响</p>
+<blockquote>
+<p>git branch -&gt; git checkout -&gt; git add -&gt; git commit -&gt; 新版本</p>
 </blockquote>
-<h2 id="css-hack-分类"><a href="#css-hack-分类" class="headerlink" title="css hack 分类"></a>css hack 分类</h2><ul>
-<li>属性前缀法(即类内部Hack)：例如 IE6能识别下划线”<em>“和星号” <em> “，IE7能识别星号” </em> “，但不能识别下划线”</em>“，IE6~IE10都认识”\9”，但firefox前述三个都不能认识。</li>
-<li>选择器前缀法(即选择器Hack)：例如 IE6能识别<em>html .class{}，IE7能识别</em>+html .class{}或者*:first-child+html .class{}。</li>
-<li>IE条件注释法(即HTML条件注释Hack)：针对所有IE(注：IE10+已经不再支持条件注释)： <!--[if IE]>IE浏览器显示的内容 <![endif]-->，针对IE6及以下版本： <!--[if lt IE 6]>只在IE6-显示的内容 <![endif]-->。这类Hack不仅对CSS生效，对写在判断语句里面的所有代码都会生效。</li>
-</ul>
-<h4 id="条件注释法"><a href="#条件注释法" class="headerlink" title="条件注释法"></a>条件注释法</h4><pre>
-    只在IE下生效
-    <!--[if IE]>
-    这段文字只在IE浏览器显示
-    <![endif]-->
-
-    只在IE6下生效
-    <!--[if IE 6]>
-    这段文字只在IE6浏览器显示
-    <![endif]-->
-
-    只在IE6以上版本生效
-    <!--[if gte IE 6]>
-    这段文字只在IE6以上(包括)版本IE浏览器显示
-    <![endif]-->
-
-    只在IE8上不生效
-    <!--[if ! IE 8]>
-    这段文字在非IE8浏览器显示
-    <![endif]-->
-
-    非IE浏览器生效
-    <!--[if !IE]>
-    这段文字只在非IE浏览器显示
-    <![endif]-->
-</pre>
-
-<h4 id="类内属性前缀法"><a href="#类内属性前缀法" class="headerlink" title="类内属性前缀法"></a>类内属性前缀法</h4><ul>
-<li>“-″减号是IE6专有的hack</li>
-<li>“\9″ IE6/IE7/IE8/IE9/IE10都生效</li>
-<li>“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack</li>
-<li>“\9\0″ 只对IE9/IE10生效，是IE9/10的hack</li>
-<li><em>html </em>前缀只对IE6生效</li>
-<li><em>+html </em>+前缀只对IE7生效</li>
-<li>@media screen\9{…}只对IE6/7生效</li>
-<li>@media \0screen {body { background: red; }}只对IE8有效</li>
-<li>@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效</li>
-<li>@media screen\0 {body { background: green; }} 只对IE8/9/10有效</li>
-<li>@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效</li>
-<li>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body - { background: orange; }} 只对IE10有效- </li>
-</ul>
-<h4 id="css-hack-利弊"><a href="#css-hack-利弊" class="headerlink" title="css hack 利弊"></a>css hack 利弊</h4><blockquote>
-<p>一般情况下，我们尽量避免使用CSS hack，但是有些情况为了顾及用户体验实现向下兼容，不得已才使用hack。比如由于IE8及以下版本不支持CSS3,而我们的项目页面使用了大量CSS3新属性在IE9/Firefox/Chrome下正常渲染，这种情况下如果不使用css3pie或htc或条件注释等方法时,可能就得让IE8-的专属hack出马了。使用hack虽然对页面表现的一致性有好处，但过多的滥用会造成html文档混乱不堪，增加管理和维护的负担。相信只要大家一起努力，少用、慎用hack，未来一定会促使浏览器厂商的标准越来越趋于统一，顺利过渡到标准浏览器的主流时代。抛弃那些陈旧的IE hack，必将减轻我们编码的复杂度，少做无用功。一般情况下，我们尽量避免使用CSS hack，但是有些情况为了顾及用户体验实现向下兼容，不得已才使用hack。比如由于IE8及以下版本不支持CSS3,而我们的项目页面使用了大量CSS3新属性在IE9/Firefox/Chrome下正常渲染，这种情况下如果不使用css3pie或htc或条件注释等方法时,可能就得让IE8-的专属hack出马了。使用hack虽然对页面表现的一致性有好处，但过多的滥用会造成html文档混乱不堪，增加管理和维护的负担。相信只要大家一起努力，少用、慎用hack，未来一定会促使浏览器厂商的标准越来越趋于统一，顺利过渡到标准浏览器的主流时代。抛弃那些陈旧的IE hack，必将减轻我们编码的复杂度，少做无用功。</p>
+</li>
+<li><p>协同开发(多人共同开发) 通过共享充仓库实现</p>
+<blockquote>
+<p>xxx.git -&gt; git init –bare (创建仓库)<br>git push -&gt; xxx.git 上传到仓库<br>git pull -&gt; xxx.git 从仓库下载到本地<br>注意 一个文件想要下载仓库的版本  必须先初始化为 git 仓库</p>
 </blockquote>
+</li>
+</ul>
+<h2 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h2><ul>
+<li>git config –global user.name “yourName” user.email “yourEmail”</li>
+<li>git init (在项目的根目录初始化git仓库)</li>
+<li>创建版本 git add -&gt; git commit -&gt; 新版本 (默认添加一个master版本)</li>
+<li>查看状态 git status</li>
+<li>git log 查看历史版本</li>
+<li>通过分支实现多任务开发 git branch 分支名 -&gt; 切换分支 git checkout 分支名 -&gt; git add -&gt; git commit -&gt; 新版本</li>
+<li>git checkout -b 分支名 (创建并切换至分支)</li>
+<li>git branch 查看分支</li>
+<li>git merge 合并分支</li>
+<li>git branch -d 删除分支</li>
+<li>通过共享仓库实现协同开发 <ol>
+<li>xx.git 的任意目录 -&gt; 进入该目录 -&gt; git init –bare</li>
+<li>进入一个git仓库中 -&gt; git push ../xx.git master </li>
+<li>进入另一个git仓库中 -&gt; git pull ../xx.git master</li>
+<li>xx.git 可以放到本地计算机上,但是其他开发者没有办法访问</li>
+<li>要解决的话,需要一个专门服务器来存放xx.git共享仓库</li>
+<li>git push user@ip:目录/xx.git master</li>
+<li>但是并不是所有人都能熟练操作服务器,所以此种方法成本比较高</li>
+<li>github 提供了共享仓库的功能</li>
+<li>以表单形式就可以创建一个仓库,并且会提供仓库的地址</li>
+<li>git push github 仓库的地址 分支名</li>
+<li>git pull github 仓库的地址 分支名</li>
+<li>为了免密码共享代码,可以通过ssh来实现</li>
+<li>ssh-keygen -t sra 命令可以在本地创建公钥和私钥</li>
+<li>将公钥的内容放到github对应账号的ssh-key下</li>
+<li>ssh 是实现计算机间的登录</li>
+<li>git remote add 短名字 真是名字</li>
+<li>如何使用 git clone 仓库地址</li>
+<li>mkdir 目录 -&gt; cd 目录 -&gt; git init -&gt; git remote add origin 仓库地址 -&gt; git pull origin master</li>
+</ol>
+</li>
+</ul>
+<h2 id="git-规范管理"><a href="#git-规范管理" class="headerlink" title="git 规范管理"></a>git 规范管理</h2><ul>
+<li>不要创建过多分支</li>
+<li>有一个”稳定分支”,即 master 分支不要轻易修改</li>
+<li>有一个开发分支(developer),保证 master 分支的稳定性</li>
+<li>所有的功能分支(feature)从 developer 创建</li>
+<li>所有功能开发完成后新建发布分支(release)</li>
+</ul>
 
           
         
@@ -358,7 +359,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -399,7 +400,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -446,7 +447,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

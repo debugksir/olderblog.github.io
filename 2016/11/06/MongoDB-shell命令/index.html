@@ -1,0 +1,628 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libs/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libs/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="MongoDB shell 常用命令
+
+关系数据的表的record 必须拥有field,mongoDB的一行数据以文档(document) 的形式,相在关系数据库中是一条记录,mongoDB的key可以不一样,在关系数据库中查询使用SQL,在mongoDB中使用find函数-&amp;gt;基于BSON的特殊查询工具,mongodb的灵活度扩展度极高
+创建一个.bat格式的文件,在文件中输入mongo -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="'MongoDB-shell命令'">
+<meta property="og:url" content="http://yoursite.com/2016/11/06/MongoDB-shell命令/index.html">
+<meta property="og:site_name" content="ksir's blog">
+<meta property="og:description" content="MongoDB shell 常用命令
+
+关系数据的表的record 必须拥有field,mongoDB的一行数据以文档(document) 的形式,相在关系数据库中是一条记录,mongoDB的key可以不一样,在关系数据库中查询使用SQL,在mongoDB中使用find函数-&amp;gt;基于BSON的特殊查询工具,mongodb的灵活度扩展度极高
+创建一个.bat格式的文件,在文件中输入mongo -">
+<meta property="og:updated_time" content="2017-01-06T04:34:47.848Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="'MongoDB-shell命令'">
+<meta name="twitter:description" content="MongoDB shell 常用命令
+
+关系数据的表的record 必须拥有field,mongoDB的一行数据以文档(document) 的形式,相在关系数据库中是一条记录,mongoDB的key可以不一样,在关系数据库中查询使用SQL,在mongoDB中使用find函数-&amp;gt;基于BSON的特殊查询工具,mongodb的灵活度扩展度极高
+创建一个.bat格式的文件,在文件中输入mongo -">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 'MongoDB-shell命令' | ksir's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ksir's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                'MongoDB-shell命令'
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T11:39:11+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p></p><h1 text-align="center">MongoDB shell 常用命令<p></p>
+<blockquote>
+<p>关系数据的表的record 必须拥有field,mongoDB的一行数据以文档(document) 的形式,相在关系数据库中是一条记录,mongoDB的key可以不一样,在关系数据库中查询使用SQL,在mongoDB中使用find函数-&gt;基于BSON的特殊查询工具,mongodb的灵活度扩展度极高</p>
+<p>创建一个.bat格式的文件,在文件中输入<code>mongo --dbpath 文件路径</code>,创建一个开设端口的.bat格式文件,在文件中输入<code>mongo 127.0.0.1:27017/admin</code> 分别打开即可开启数据库 </p>
+<ul>
+<li>创建一个数据库 <code>use[datebase]</code></li>
+<li>插入文档 <code>db.[documentName].insert({})</code></li>
+<li>查看所有数据库 <code>show dbs</code></li>
+<li>查看数据库中所有文档 <code>show collections</code></li>
+<li>查询文档数据 <code>db.[documentName].find()</code> 查询一条 <code>db.[documentNmae].findOne()</code></li>
+<li>批量插入文档 <code>1. 用mongo的应用驱动. 2.shell的for循环</code></li>
+<li>删除列表中的所有数据 <code>db.[documentName].remove()</code></li>
+<li>根据条件删除 <code>db.text.remove({name: &quot;ksir&quot;})</code></li>
+<li>删除库中的集合 <code>db.[documentName].drop()</code></li>
+<li>删除数据库 <code>db.dropDatabase()</code></li>
+<li>显示帮助 <code>数据库下的帮助:db.help(),集合下的帮助:db.[documentName].help()</code></li>
+<li>mongoDB的API <code>http://api.mongodb.org</code></li>
+<li>强硬的文档替换式更新操作 <code>db.[documentName].update({查询器},{修改器})</code></li>
+<li>显示数据库状态 <code>db.stats()</code></li>
+</ul>
+<p>主键冲突的时候会报错并且停止更新操作</p>
+</blockquote>
+<ul>
+<li>insertOrUpdate 操作 <code>如果存在数据就执行更新操作,否则执行插入操作 db.[documentName]({查询器},{修改器},true)</code></li>
+<li>批量更新操作 <code>当查修多条数据的时候默认修改第一条数据,如何批量修改数据: db.[documentName].update({查询器},{修改器},false,true)</code></li>
+<li><p>$addToSet与$each 结合完成批量数组更新 <code>db.text.update({_id:100},{$addToSet:{books:{$each:[&quot;JS&quot;,&quot;HTML&quot;,&quot;CSS&quot;,&quot;DB&quot;]}}})</code></p>
+</li>
+<li><p>数据库和集合的命名规范</p>
+</li>
+</ul>
+<blockquote>
+<p>不能是空字符串;不能含有’’,空格,$,/,\等;应全部小写;最多64个字节;不能与数据保留库名同名如”admin”,”local”,”config”;</p>
+<p>mongoDB 的shell内置Javascript引擎,可以直接执行js代码;shell可以使用eval</p>
+</blockquote>
+</h1>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/13/wamp的安装和环境配置/" rel="next" title="wamp的安装和环境配置">
+                <i class="fa fa-chevron-left"></i> wamp的安装和环境配置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/正则表达式/" rel="prev" title="'正则表达式'">
+                '正则表达式' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ksir" />
+          <p class="site-author-name" itemprop="name">ksir</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">MongoDB shell 常用命令
+
+关系数据的表的record 必须拥有field,mongoDB的一行数据以文档(document) 的形式,相在关系数据库中是一条记录,mongoDB的key可以不一样,在关系数据库中查询使用SQL,在mongoDB中使用find函数->基于BSON的特殊查询工具,mongodb的灵活度扩展度极高
+创建一个.bat格式的文件,在文件中输入mongo --dbpath 文件路径,创建一个开设端口的.bat格式文件,在文件中输入mongo 127.0.0.1:27017/admin 分别打开即可开启数据库 
+
+创建一个数据库 use[datebase]
+插入文档 db.[documentName].insert({})
+查看所有数据库 show dbs
+查看数据库中所有文档 show collections
+查询文档数据 db.[documentName].find() 查询一条 db.[documentNmae].findOne()
+批量插入文档 1. 用mongo的应用驱动. 2.shell的for循环
+删除列表中的所有数据 db.[documentName].remove()
+根据条件删除 db.text.remove({name: "ksir"})
+删除库中的集合 db.[documentName].drop()
+删除数据库 db.dropDatabase()
+显示帮助 数据库下的帮助:db.help(),集合下的帮助:db.[documentName].help()
+mongoDB的API http://api.mongodb.org
+强硬的文档替换式更新操作 db.[documentName].update({查询器},{修改器})
+显示数据库状态 db.stats()
+
+主键冲突的时候会报错并且停止更新操作
+
+
+insertOrUpdate 操作 如果存在数据就执行更新操作,否则执行插入操作 db.[documentName]({查询器},{修改器},true)
+批量更新操作 当查修多条数据的时候默认修改第一条数据,如何批量修改数据: db.[documentName].update({查询器},{修改器},false,true)
+$addToSet与$each 结合完成批量数组更新 db.text.update({_id:100},{$addToSet:{books:{$each:["JS","HTML","CSS","DB"]}}})
+
+数据库和集合的命名规范
+
+
+
+不能是空字符串;不能含有’’,空格,$,/,\等;应全部小写;最多64个字节;不能与数据保留库名同名如”admin”,”local”,”config”;
+mongoDB 的shell内置Javascript引擎,可以直接执行js代码;shell可以使用eval
+
+</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ksir</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libs/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libs/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libs/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/03/Javascript面向对象篇-1/" itemprop="url">
-                  Javascript面向对象篇 1
+                <a class="post-title-link" href="/2016/01/15/display属性详解/" itemprop="url">
+                  display属性详解
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-03T19:58:35+08:00" content="2016-01-03">
-              2016-01-03
+            <time itemprop="dateCreated" datetime="2016-01-15T22:04:01+08:00" content="2016-01-15">
+              2016-01-15
             </time>
           </span>
 
@@ -274,168 +274,41 @@
       
         
           
-            <h2 id="表达式的概念"><a href="#表达式的概念" class="headerlink" title="表达式的概念"></a>表达式的概念</h2><ul>
-<li>广义的概念:所有返回的一段代码块,都可以成为表达式.比如:<pre>
-var a=0;
-var a, b;
-</pre></li>
-<li>a = 0;这个表达式的返回值为0;</li>
-<li>b = a;这个表达式的返回值为a;</li>
-<li>赋值表达式的返回值为=右边的值;</li>
+            <h2 id="display-属性的详解"><a href="#display-属性的详解" class="headerlink" title="display 属性的详解"></a>display 属性的详解</h2><h4 id="display-block"><a href="#display-block" class="headerlink" title="display:block"></a>display:block</h4><ul>
+<li>block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。</li>
+<li>block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。</li>
+<li>block元素可以设置margin和padding属性。</li>
 </ul>
-<h2 id="面向对象的概念"><a href="#面向对象的概念" class="headerlink" title="面向对象的概念:"></a>面向对象的概念:</h2><ul>
-<li><p>一种编程思想.核心:在解决任何问题的时候,首先试图去找到一个对象来帮助解决问题.</p>
-</li>
-<li><p>优点:</p>
-<blockquote>
-<ol>
-<li>身份:调度者;</li>
-<li>代码的灵活度高;</li>
-<li>可维护性高;</li>
-<li>可扩展性高;</li>
-</ol>
+<h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display:inline"></a>display:inline</h4><ul>
+<li>inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。</li>
+<li>inline元素设置width,height属性无效。</li>
+<li>inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。</li>
+</ul>
+<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h4><ul>
+<li>简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。</li>
+</ul>
+<h4 id="inline-table"><a href="#inline-table" class="headerlink" title="inline-table"></a>inline-table</h4><ul>
+<li>以表格的形式排列成行。 显示样式如下：</li>
+</ul>
+<h4 id="list-item"><a href="#list-item" class="headerlink" title="list-item"></a>list-item</h4><ul>
+<li>以列表项的形式显示，类似</li><li>标签。</li>
+</ul>
+<h4 id="run-in"><a href="#run-in" class="headerlink" title="run-in"></a>run-in</h4><ul>
+<li>若run-in框后面不是块级框时，run-in框本身将成为块级框</li>
+</ul>
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><ul>
+<li>弹性盒子或者说伸缩盒子</li>
+</ul>
+<h2 id="inline-block-在什么情况下用"><a href="#inline-block-在什么情况下用" class="headerlink" title="inline-block 在什么情况下用"></a>inline-block 在什么情况下用</h2><blockquote>
+<p>元素变成行内元素且有块级元素的属性（width，height等）的时候用,比如说我们的logo放在a标签内时,想要a标签的宽和高能够包裹logo的话需要把a标签设置为inline-block</p>
 </blockquote>
-</li>
-<li><p>缺点:</p>
+<h2 id="inline-block-和-float的区别"><a href="#inline-block-和-float的区别" class="headerlink" title="inline-block 和 float的区别"></a>inline-block 和 float的区别</h2><ul>
+<li>使用inline-block：当你需要控制元素的垂直对齐跟水平排列时，使用inline-block。</li>
+<li>使用浮动：当你需要让元素环绕某一个元素时，或者需要支持旧版本ie，或者不想处理inline-block带来的空白问题时，使用浮动。</li>
+</ul>
 <blockquote>
-<ol>
-<li>可能造成代码的复杂度提高</li>
-<li>可读性相对不好</li>
-</ol>
+<p>若父元素中的图片等高，设置浮动就会工作正常。但一旦有一列图片比较高时，图片的排列就会出现问题。这是因为浮动后，图片脱离了文档流。<br>而inline-block由于未脱离文档流，不会出现这个问题。如果你想再创建一列图片时，不会受到上一列图片inline:block的影响。而你在使用时需要时刻注意清除浮动，当内容不断变化时这很容易产生bug。<br>另一种inline-block的适用场景：横向导航栏。通常，我们一般会设置a元素display：block然后进行浮动来制作。有时候我会直接通过对列表元素设置display:inline来制作。如果在制作中，你需要设置不同的display属性来处理浮动，那么inline-block不失为一种更好的解决方案。<br>当你需要将元素排列成一行或者多行时，更倾向于考虑使用inline-block代替float。当然，直接使用table也是一种方法，他毕竟是专门用来处理横向与纵向排列的元素的。<br>如果你需要创建一个很复杂的包含行列的布局，table是你的最佳选择，不过你同样也可以考虑inline-block</p>
 </blockquote>
-</li>
-</ul>
-<h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程:"></a>面向过程:</h2><ul>
-<li>身份: 执行者</li>
-<li>顺序: 一般情况下不能打乱,从上至下一步一步执行.</li>
-</ul>
-<h2 id="javascript语言的特点"><a href="#javascript语言的特点" class="headerlink" title="javascript语言的特点:"></a>javascript语言的特点:</h2><ul>
-<li>弱类型</li>
-<li>多范式</li>
-<li>基于对象的语言:在js中,一切都是对象</li>
-<li>基于原形的语言</li>
-</ul>
-<h2 id="原型的概念"><a href="#原型的概念" class="headerlink" title="原型的概念"></a>原型的概念</h2><p><code>所谓原型形就是一个函数的prototype属性所引用的对象</code></p>
-<ul>
-<li>只要声明一个函数,那么原型就存在<pre>
-function foo(){};
-foo.prototype['name']='ksir';
-var f = new foo();
-console.log(f.constructor ===foo.prototype.constructor);
-</pre></li>
-<li>当通过该函数创建出来的每一个对象,都共享此原型,也就是说上述创建出来的所有对象可以直接访问到原型上的任何成员(属性和方法);<br>(对象的动态特性就是对象可以同过<code>.</code>或者<code>[]</code>来动态创建对象);</li>
-</ul>
-<h2 id="原型的本质"><a href="#原型的本质" class="headerlink" title="原型的本质"></a>原型的本质</h2><ul>
-<li>原型的本质就是对象</li>
-</ul>
-<pre>
-function Person(name,age,gender){
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.talk = function(){
-        console.log('hello');
-     }
- }
- var kangfeng = new Person('康峰',21,'男');
- var xiaoming = new Person('小明',20,'女');
- var xiaohong = new Person('小红','19','女');
-
- kangfeng.talk();
- xiaoming.talk();
- xiaohong.talk();
- //思考:这三个儿女的talk方法是否一样?
- console.log(xiaoming.talk === kangfeng.talk);
- console.log(xiaohong.talk === xiaohong.talk):
- //这三个对象的方法是不一样,相互独立的
- Person.prototype.addfu(){
-    console.log('给原型添加一个函数');
-}
-</pre>
-
-<ul>
-<li><p>在构造函数中存在相同的逻辑代码,然后再创建对象的时候,会拷贝该函数中的代码逻辑,把构造函数内的方法提取出来放在一个公共的地方,这个公共的地方是该构造函数创建出来的对象都能访问,–构造函数的所有对象能够共享构造函数的原型</p>
-</li>
-<li><p>有点:实现同类对象的数据共享</p>
-</li>
-</ul>
-<h2 id="获取原型的方式"><a href="#获取原型的方式" class="headerlink" title="获取原型的方式"></a>获取原型的方式</h2><ul>
-<li>通过函数:</li>
-</ul>
-<p><code>&lt;fnName&gt;.prototype;</code></p>
-<ul>
-<li>通过对象:</li>
-</ul>
-<pre>
-object.__proto__;
-//两个下划线
-</pre>
-
-<h2 id="对象的组成部分"><a href="#对象的组成部分" class="headerlink" title="对象的组成部分"></a>对象的组成部分</h2><p><code>对象本身;他的原型</code></p>
-<ul>
-<li>每一个对象都有<code>__proto__</code>属性,也就是说每一个对象都有原型</li>
-<li><code>Math.__proto__===object.prototype;</code></li>
-</ul>
-<h2 id="对象的类型就是构造函数的名字"><a href="#对象的类型就是构造函数的名字" class="headerlink" title="对象的类型就是构造函数的名字"></a>对象的类型就是构造函数的名字</h2><h2 id="原型属性-amp-原型对象"><a href="#原型属性-amp-原型对象" class="headerlink" title="原型属性&amp;原型对象"></a>原型属性&amp;原型对象</h2><ul>
-<li>原型属性:站在函数的角度,原型可以被称为该函数的原型属性</li>
-<li>原型对象:站在对象的角度,原型可以被称为该对象的原型对象</li>
-</ul>
-<h2 id="proto-这种双下划线的标准不是w3c的标准-这些属性都是非标准属性-有兼容性问题"><a href="#proto-这种双下划线的标准不是w3c的标准-这些属性都是非标准属性-有兼容性问题" class="headerlink" title="__proto__这种双下划线的标准不是w3c的标准,这些属性都是非标准属性,有兼容性问题"></a><code>__proto__</code>这种双下划线的标准不是w3c的标准,这些属性都是非标准属性,有兼容性问题</h2><ul>
-<li>如果我们无法通过通过双下划线获取原型属性的时候,我们就得通过函数来获取它</li>
-</ul>
-<pre>
-function getPrototype(obj){
-    //判断浏览器是否兼容__proto__属性
-    //return !!obj.__proto__? obj.__proto__:obj.constructor.prototype;
-    if(obj.__proto__){
-    //支持
-        return obj.__proto__;
-    }else{
-        //获取该对象的构造函数
-        //在通过此函数的prototype属性获取其原型对象
-        return obj.constructor.prototype;
-    }
-}
-
-function A(){};
-var a = A();
-console.log(getPrototype(a).constructor);
-//如果我们的函数中有if else return结构,我们可以用3元运算符来优化.
-
-</pre>
-
-<h2 id="标准构造函数的写法"><a href="#标准构造函数的写法" class="headerlink" title="标准构造函数的写法"></a>标准构造函数的写法</h2><pre>
-//哪些属性要保存在构造函数的内部,哪些属性需要提取出来放放原型上
-
-function B(name){};
-B.prototype.name = 'tom';
-var tom = new B;
-console.log(tome.name);
-var jim = new jim;
-console.log(jim.name);
-//结果都是tom
-//所以和具体某个对象息息相关的称为私有属性,这写属性都必须写在构造函数内,那些共享的属性(每个对象都具有的属性,不会随对象变化而变化,比如说一些方法(对象的行为)--公有属性)就可以定义在原型属性中.
-//一般情况下,构造函数的方法放原型上
-//不提倡在js原生对象上进行扩展成员
-//坏处,会导致原生对象过于庞大,累赘,影响性能
-</pre>
-
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
-<li>给构造函数添加方法一般添加在原型上,为了方便,一般将方法以对象的形式添加到 &lt;构造函数名&gt;.prototype{}里面,同时,不要忘了添加<code>constructor: 构造函数名</code> 键值对</li>
-</ul>
-<h2 id="原型的特性"><a href="#原型的特性" class="headerlink" title="原型的特性"></a>原型的特性</h2><h3 id="动态性"><a href="#动态性" class="headerlink" title="动态性:"></a>动态性:</h3><ul>
-<li>给原型扩展成员会直接反应到已创建的对象身上</li>
-<li>替换原型对象,不会反应到已创建出来的对象,但是会直接影响之后创建出来的对象</li>
-</ul>
-<h3 id="唯一性"><a href="#唯一性" class="headerlink" title="唯一性"></a>唯一性</h3><ul>
-<li>由同一函数创建出来的所有对象,共享同一个原型对象</li>
-</ul>
-<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性:"></a>不可变性:</h3><ul>
-<li>对象是无法改变原型对象上的任何成员</li>
-</ul>
-<h3 id="继承性"><a href="#继承性" class="headerlink" title="继承性:"></a>继承性:</h3><ul>
-<li>所有对象都继承自它的原型对象</li>
-</ul>
 
           
         
@@ -468,7 +341,7 @@ console.log(jim.name);
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -509,7 +382,7 @@ console.log(jim.name);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -556,7 +429,7 @@ console.log(jim.name);
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

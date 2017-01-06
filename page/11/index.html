@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/08/css-常见问题总结/" itemprop="url">
-                  css 常见问题总结
+                <a class="post-title-link" href="/2016/01/21/px、em和rem的区别/" itemprop="url">
+                  px、em和rem的区别
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-08T20:03:39+08:00" content="2016-01-08">
-              2016-01-08
+            <time itemprop="dateCreated" datetime="2016-01-21T20:04:56+08:00" content="2016-01-21">
+              2016-01-21
             </time>
           </span>
 
@@ -274,142 +274,31 @@
       
         
           
-            <h2 id="css-常见问题总结"><a href="#css-常见问题总结" class="headerlink" title="css 常见问题总结"></a>css 常见问题总结</h2><h4 id="哪些css属性可以继承"><a href="#哪些css属性可以继承" class="headerlink" title="哪些css属性可以继承?"></a>哪些css属性可以继承?</h4><ul>
-<li><p>可继承:</p>
-<ol>
-<li>font-size</li>
-<li>font-family</li>
-<li>color </li>
-<li>ul</li>
-<li>li</li>
-<li>dl</li>
-<li>dd </li>
-<li>dt </li>
+            <h2 id="px、em、rem的区别及换算方法"><a href="#px、em、rem的区别及换算方法" class="headerlink" title="px、em、rem的区别及换算方法"></a>px、em、rem的区别及换算方法</h2><h4 id="px的特点："><a href="#px的特点：" class="headerlink" title="px的特点："></a>px的特点：</h4><ol>
+<li>IE无法调整那些使用px作为单位的字体大小；</li>
+<li>国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li>
+<li>Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。(引自CSS2.0手册)。</li>
 </ol>
-</li>
-<li><p>不可继承:</p>
+<blockquote>
+<p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。(引自CSS2.0手册)。</p>
+<p>px与em的换算方法：<br>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p>
+<p>这里为大家提供一个网址，打开之后，根据自己的需要输入相应的数值就能一键换算：</p>
+</blockquote>
+<p><code>http://pxtoem.com/</code></p>
+<h4 id="em的特点："><a href="#em的特点：" class="headerlink" title="em的特点："></a>em的特点：</h4><blockquote>
+<p>em的值并不是固定的；em会继承父级元素的字体大小。所以我们在写CSS的时候，需要注意两点：</p>
+</blockquote>
 <ol>
-<li>border</li>
-<li>padding</li>
-<li>margin</li>
-<li>width</li>
-<li>height</li>
+<li>body选择器中声明Font-size=62.5%；</li>
+<li>将你的原来的px数值除以10，然后换上em作为单位；</li>
+<li>重新计算那些被放大的字体的em数值。避免字体大小的重复声明。也就是避免1.2 * 1.2= 1.44的现象。比如说你在#content中声明了字体大小为1.2em，那么在声明p的字体大小时就只能是1em，而不是1.2em, 因为此em非彼em，它因继承#content的字体高而变为了1em=12px。</li>
 </ol>
-</li>
-</ul>
-<h4 id="css-有哪些选择器-优先级如何计算"><a href="#css-有哪些选择器-优先级如何计算" class="headerlink" title="css 有哪些选择器,优先级如何计算"></a>css 有哪些选择器,优先级如何计算</h4><ul>
-<li>id 选择器  (# myid)</li>
-<li>类选择器 (.myclass)</li>
-<li>标签选择器 (div)</li>
-<li>相邻选择器 (h1+p)</li>
-<li>子代选择器 (div&gt;p)</li>
-<li>后代选择器 (div p)</li>
-<li>通配符选择器 (*)</li>
-<li>属性选择器 (div[class=”myclass”])</li>
-<li>伪类选择器 (a:hover, li:nth-child)</li>
-</ul>
-<p>css3 新增选择器</p>
-<ul>
-<li>p:first-of-type</li>
-<li>p:last-of-type</li>
-<li>p:only-of-type</li>
-<li>p:only-child</li>
-<li>nth-child(2)</li>
-<li>:enabled</li>
-<li>:disabled</li>
-<li>:checked</li>
-</ul>
-<blockquote>
-<p>优先级: !important &gt; 内联 &gt; id &gt; class &gt; tag</p>
-<p>优先级就近原则,样式定义最近者为准 内联 &gt; 嵌入 &gt; link引入</p>
-<p>以最后载入的样式为准</p>
+<h4 id="rem的特点："><a href="#rem的特点：" class="headerlink" title="rem的特点："></a>rem的特点：</h4><blockquote>
+<p>rem是CSS3新增的一个相对单位（root em，根em），这个单位引起了广泛关注。这个单位与em有什么区别呢？区别在于使用rem为元素设定字体大小时，仍然是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。下面就是一个例子：</p>
 </blockquote>
-<h4 id="行内元素块元素分别有哪些"><a href="#行内元素块元素分别有哪些" class="headerlink" title="行内元素块元素分别有哪些"></a>行内元素块元素分别有哪些</h4><ul>
-<li><p>行内元素</p>
-<ol>
-<li>a - 锚点</li>
-<li>abbr - 缩写</li>
-<li>acronym - 首字</li>
-<li>b - 粗体(不推荐)</li>
-<li>bdo - bidi override</li>
-<li>big - 大字体</li>
-<li>br - 换行</li>
-<li>cite - 引用</li>
-<li>code - 计算机代码(在引用源码的时候需要)</li>
-<li>dfn - 定义字段</li>
-<li>em - 强调</li>
-<li>font - 字体设定(不推荐)</li>
-<li>i - 斜体</li>
-<li>img - 图片</li>
-<li>input - 输入框</li>
-<li>kbd - 定义键盘文本</li>
-<li>label - 表格标签</li>
-<li>q - 短引用</li>
-<li>s - 中划线(不推荐)</li>
-<li>samp - 定义范例计算机代码</li>
-<li>select - 项目选择</li>
-<li>small - 小字体文本</li>
-<li>span - 常用内联容器，定义文本内区块</li>
-<li>strike - 中划线</li>
-<li>strong - 粗体强调</li>
-<li>sub - 下标</li>
-<li>sup - 上标</li>
-<li>textarea - 多行文本输入框</li>
-<li>tt - 电传文本</li>
-<li>u - 下划线</li>
-<li>var - 定义变量</li>
-</ol>
-</li>
-<li><p>块元素</p>
-<ol>
-<li>address - 地址</li>
-<li>blockquote - 块引用</li>
-<li>center - 举中对齐块 </li>
-<li>dir - 目录列表 </li>
-<li>div - 常用块级容易，也是</li>
-<li>css layout的主要标签 </li>
-<li>dl - 定义列表 </li>
-<li>fieldset - form控制组 </li>
-<li>form - 交互表单 </li>
-<li>h1 - 大标题 </li>
-<li>h2 - 副标题 </li>
-<li>h3 - 3级标题 </li>
-<li>h4 - 4级标题 </li>
-<li>h5 - 5级标题 </li>
-<li>h6 - 6级标题 </li>
-<li>hr - 水平分隔线 </li>
-<li>isindex - input prompt </li>
-<li>menu - 菜单列表 </li>
-<li>noframes - frames可选内容，（对于不支持frame的浏览器显示此区块内容</li>
-<li>noscript - 可选脚本内容（对于不支持script的浏览器显示此内容） </li>
-<li>ol - 排序表单 </li>
-<li>p - 段落 </li>
-<li>pre - 格式化文本 </li>
-<li>table - 表格 </li>
-<li>ul - 非排序列表</li>
-</ol>
-</li>
-</ul>
-<h4 id="DIV-CSS两种盒子模型"><a href="#DIV-CSS两种盒子模型" class="headerlink" title="DIV CSS两种盒子模型"></a>DIV CSS两种盒子模型</h4><ul>
-<li>定义: </li>
-</ul>
-<blockquote>
-<p>网页设计中常听的属性名：内容(content)、填充(padding)、边框(border)、边界(margin)， CSS盒子模式都具备这些属性。<br>这些属性我们可以用日常生活中的常见事物——盒子作一个比喻来理解，所以叫它盒子模式。<br>CSS盒子模型就是在网页设计中经常用到的CSS技术所使用的一种思维模型。</p>
-</blockquote>
-<ul>
-<li>标准盒子模型/W3C盒子模型 - content-box</li>
-</ul>
-<blockquote>
-<p>范围包括margin,border,padding,content 并且content不包含其他部分</p>
-</blockquote>
-<ul>
-<li>IE盒子模型 - bordr-box</li>
-</ul>
-<blockquote>
-<p>范围包括margin,border,paddin,content 和W3C盒子模型不同的是它的content包含了border和padding</p>
-</blockquote>
-<pre>content-box和border-box的主要区别是二者的盒子的宽度是否包含元素的边框和内边距。</pre>
-
+<pre>
+p {font-size:14px; font-size:.875rem;}
+</pre>
 
           
         
@@ -442,7 +331,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -483,7 +372,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -530,7 +419,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/01/Java高级浅谈一二/" itemprop="url">
-                  Java高级浅谈一二
+                <a class="post-title-link" href="/2016/01/03/解决盒子塌陷的几种方法/" itemprop="url">
+                  解决盒子塌陷的几种方法
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-01T21:03:36+08:00" content="2015-12-01">
-              2015-12-01
+            <time itemprop="dateCreated" datetime="2016-01-03T21:06:43+08:00" content="2016-01-03">
+              2016-01-03
             </time>
           </span>
 
@@ -274,155 +274,21 @@
       
         
           
-            <h2 id="创建函数的方式"><a href="#创建函数的方式" class="headerlink" title="创建函数的方式"></a>创建函数的方式</h2><ul>
-<li><p>声明式</p>
-<pre>
-  function foo(){
-      consolo.log(arguments);
-  }
-  foo(1,2,'3',{name:'ksir'});
-</pre>
-</li>
-<li><p>表达式</p>
-<pre>
-  var foo = function() {
-      console.log(arguments);
-  };
-  foo(1,2,'3',{name:'ksir'});
+            <h2 id="解决盒子塌陷的几种方案"><a href="#解决盒子塌陷的几种方案" class="headerlink" title="解决盒子塌陷的几种方案"></a>解决盒子塌陷的几种方案</h2><ul>
+<li>给父盒子添加高度</li>
+<li>给父盒子添加<code>clear: both</code>样式 (缺点:两个div之间的margin值失效)</li>
+<li>内墙法<pre>
+clear:after {
+  content: '';
+  clear: both;
+  display: block;
+  height: 0;
+  width: 0;
+  visibility: hidden;
 }
-</pre>
-</li>
-<li><p>构造函数</p>
-<pre>
-  //Function(arg1,arg2,...,argN,body);所有的参数类型均为字符串
-  //arg1,arg2,...,argN 为可选的形参列表,表达为创建出来的函数的形参列表,数据类型字符串类型
-  //body 为必选参数,字符串类型,表达为:创建出来的函数的函数体部分
-  //var = new Function('val1','val2','return val1+val2');
-  var foo = new Function('return arguments[0] + arguments[1];');
-  console.log(foo(1));
-  console.log(foo);
-  //函数也是对象
-  //__proto__
-  console.log(!!foo.__proto__);
-</pre>
-
-</li>
+</pre></li>
+<li>给父盒子设置<code>overflow: auto</code> (缺点: 可能会出现滚动条)</li>
 </ul>
-<blockquote>
-<p>所有的函数都是Function的实例,也就是说所有的函数的构造函数都是Function,所以所有的函数的原型对象为Function.prototype</p>
-<p>将函数称为函数对象</p>
-<p>其他对象称为普通对象</p>
-</blockquote>
-<h2 id="绘制函数的原型链"><a href="#绘制函数的原型链" class="headerlink" title="绘制函数的原型链"></a>绘制函数的原型链</h2><p><img src="./images/Function.jpg" alt=""></p>
-<h2 id="arguments对象属性"><a href="#arguments对象属性" class="headerlink" title="arguments对象属性"></a>arguments对象属性</h2><ul>
-<li>length 实参的个数</li>
-<li>callee  返回正在执行的函数,应用在匿名函数递归调用</li>
-</ul>
-<h2 id="函数的相关属性"><a href="#函数的相关属性" class="headerlink" title="函数的相关属性"></a>函数的相关属性</h2><ul>
-<li>caller 返回调用当前函数的函数</li>
-<li>length 形成那的个数</li>
-<li>name 存储函数的名字</li>
-</ul>
-<h2 id="模拟函数重载"><a href="#模拟函数重载" class="headerlink" title="模拟函数重载"></a>模拟函数重载</h2><pre>
-    //如果函数没有传递实参,就直接打印false
-    //如果传递一个实参,就将其直接打印出来
-    //如果传递两个实参,就将两个实参拼接起来,然后打印出来
-    //如果传递一个实参并且类型为数字的话,加1在打印
-    function foo(){
-    // console.log(arguments.length);
-        if (arguments.length === 0) {
-            console.log('false');
-        }else if(arguments.length === 1 ){
-            if (typeof arguments[0] === 'number') {
-                console.log(arguments[0] + 1);
-            }else{
-                console.log(arguments[0]);
-            }
-        }else if (arguments.length === 2 ){
-            console.log(arguments[0] + '' + arguments[1]);
-            }else{
-            console.log('传入的参数大于2');
-        }
-    }
-    foo();
-    foo(1);
-    foo('a');
-    foo(1,'a');
-</pre>
-
-<h2 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h2><blockquote>
-<p>概念: 函数调用自身</p>
-</blockquote>
-<ul>
-<li>递归调用的时候,都要加上递归调用的开始条件</li>
-</ul>
-<pre>
-    function foo(){
-        foo();
-    }
-    foo();
-</pre>
-
-<ul>
-<li>实例1:求等差数列第n项的值</li>
-</ul>
-<pre>
-    //第一项的值 v
-    //等差: d
-    //n 等差数列第n项
-
-    function foo(v,d,n){
-
-        if(n < 1 ){
-            return undefined;
-        }else if( n === 1 ){
-            return v;
-        }else {
-            return foo(v,d,n -1) + d;
-        }
-    }
-    foo (2,2,5);
-</pre>
-
-<ul>
-<li>实例2: fibonacci第n项</li>
-</ul>
-<pre>
-    function fib(n){
-        if(n < 1){
-            return undefined;
-        }else if (n === 1 || n === 2){
-            return 1;
-        }else{
-        return fib(n - 1) + fib(n - 2)
-        }
-    }
-    console.log(fib(6));
-
-    //匿名函数的递归调用
-    var v = (function (n){
-            if(n < 1){
-                return undefined;
-            }else if (n === 1 || n === 2){
-                return 1;
-            }else{
-                return arguments.callee(n - 1) + arguments.callee(n - 2)
-            }
-        }(8));
-    console.log(v);  
-</pre>
-
-<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><blockquote>
-<p>规定变量的作用是由变量定义的位置决定,而不是由使用变量的位置决定,在词法作用域中,只有函数可以分割作用域,在函数内部是一个完整的作用域,与外界隔离,也就是在函数内部可以访问函数外部的数据,单函数外部无法访问内部的数据</p>
-</blockquote>
-<h2 id="变量名-函数名-提升"><a href="#变量名-函数名-提升" class="headerlink" title="变量名(函数名)提升"></a>变量名(函数名)提升</h2><blockquote>
-<p>在js预解析阶段执行的操作<br>js本身是边解析边执行的</p>
-<p>在预解析阶段: 首先分析代码语法,如果有语法错误,就直接抛出异常,其次,将变量名以及函数名提升到当前作用域的最顶端</p>
-</blockquote>
-<h2 id="in-运算符"><a href="#in-运算符" class="headerlink" title="in 运算符"></a>in 运算符</h2><blockquote>
-<p>前面的属性名字须用字符串来表示,如果为变量,那么会将变量的值隐式转换成字符串,然后去判断变量的值是否为指定对象的属性(可以为继承过来的属性)</p>
-<p>注意后面的参数必须为对象,否则会报错</p>
-</blockquote>
 
           
         
@@ -455,7 +321,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -496,7 +362,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -543,7 +409,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

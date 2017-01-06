@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/13/wamp的安装和环境配置/" itemprop="url">
-                  wamp的安装和环境配置
+                <a class="post-title-link" href="/2017/01/06/node-js学习笔记三/" itemprop="url">
+                  'node.js学习笔记三'
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-13T20:01:35+08:00" content="2016-03-13">
-              2016-03-13
+            <time itemprop="dateCreated" datetime="2017-01-06T12:29:20+08:00" content="2017-01-06">
+              2017-01-06
             </time>
           </span>
 
@@ -274,30 +274,84 @@
       
         
           
-            <h2 id="wamp的安装和环境配置"><a href="#wamp的安装和环境配置" class="headerlink" title="wamp的安装和环境配置"></a>wamp的安装和环境配置</h2><h3 id="wamp的简单介绍"><a href="#wamp的简单介绍" class="headerlink" title="wamp的简单介绍"></a>wamp的简单介绍</h3><blockquote>
-<p>Windows+Apache+Mysqul++PHP的首字母组合,集成安装环境,windows下的apache,php和mysql的服务器软件</p>
+            <h1 text-align="center">node.js 学习笔记三</h1>
+
+<h4 id="node-js的事件循环机制"><a href="#node-js的事件循环机制" class="headerlink" title="node.js的事件循环机制"></a>node.js的事件循环机制</h4><blockquote>
+<p>Node.js 在什么时候会进入事件循环呢？答案是 Node.js 程序由事件循环开始，到事件循环结束，所有的逻辑都是事件的回调函数，所以 Node.js 始终在事件循环中，程序入口就是事件循环第一个事件的回调函数。事件的回调函数在执行的过程中，可能会发出 I/O 请求或直接发射（emit）事件，执行完毕后再返回事件循环，事件循环会检查事件队列中有没有未处理的事件，直到程序结束</p>
+<p>事件循环 –&gt; 回调函数 –&gt; 磁盘I/O/网络通信/数据库查询 –&gt; 时间循环队列 –&gt; 事件循环 –&gt; 回调函数 </p>
 </blockquote>
-<h3 id="wamp的安装"><a href="#wamp的安装" class="headerlink" title="wamp的安装"></a>wamp的安装</h3><ul>
-<li>注意必需安装在没有中文文件名的目录下</li>
-<li>安装好后我们可以在浏览器中输入127.0.0.1查看是否安装成功</li>
-<li>为了能让更多域名来访问我们的服务器,我们需要对wamp安装目录下的bin下的apache下的Apache版本下的canf下的httpd.conf进行响应配置,这里我以自己的安装目录为例 <code>C:\wamp\bin\apache\Apache2.2.21\conf\httpd.conf</code></li>
-<li>在第235 行添加 Allow from all ,打开服务器的访问权限</li>
-<li>如何修改成我们指定的根目录呢? </li>
+<h4 id="模板和包"><a href="#模板和包" class="headerlink" title="模板和包"></a>模板和包</h4><ul>
+<li><p>模块（Module）和包（Package）是 Node.js 最重要的支柱。开发一个具有一定规模的程序不可能只用一个文件，通常需要把各个功能拆分、封装，然后组合起来，模块正是为了实现这种方式而诞生的。模板都是基于文件的,机制很简单.可以把包理解为实现了某个功能的模块的集合</p>
+</li>
+<li><p>什么是模块</p>
+</li>
 </ul>
 <blockquote>
-<p>在httpd.conf文件的第178和205行把我们指定的根目录文件拷贝过来</p>
-</blockquote>
-<ul>
-<li>如何实现对多个网站的管理呢?</li>
-</ul>
-<blockquote>
-<p>在httpd.conf第467行找到virtual hosts下面的include, 把include前面的#号去掉,即打开注释,<br>然后在C:\wamp\bin\apache\Apache2.2.21\conf\extra\httpd-vhosts.conf 中对<br>DocumentRoot “E:/www/example”<br>ServerName “example.com”<br>ServerAlias “www.example.com”<br>三项修改即可,注意修改之后须重启服务器才能生效</p>
+<p>模块是 Node.js 应用程序的基本组成部分，文件和模块是一一对应的。换言之，一个<br>Node.js 文件就是一个模块，这个文件可能是 JavaScript 代码、JSON 或者编译过的 C/C++ 扩展。</p>
 </blockquote>
 <ul>
-<li>如何对DNS(ip域名映射关系)进行设置呢?</li>
+<li>创建模块</li>
 </ul>
 <blockquote>
-<p>在C:\Windows\System32\drivers\etc\hosts下,将hosts文件拷贝出来,把127.0.0.1指定成你想要的域名地址,然后将原来的hosts文件覆盖即可</p>
+<p>在 Node.js 中，创建一个模块非常简单，因为一个文件就是一个模块，我们要关注的问<br>题仅仅在于如何在其他文件中获取这个模块。Node.js 提供了 exports 和 require 两个对象，其中 exports 是模块公开的接口，require 用于从外部获取一个模块的接口，即所获取模块的 exports 对象。</p>
+</blockquote>
+<pre>
+新建一个module.js文件
+    var name;
+
+    exports.setName = function(thyname) {
+        name = thyname;
+    };
+    exports.sayHello = function(){
+        console.log('hello! ' + name + ' how are you ! ');
+    };
+新建一个getModule.js文件
+    var ksir = require('./module');
+    ksir.setName('ksir');
+    ksir.sayHello();
+</pre>
+
+<blockquote>
+<p>不管getModule.js调用module模块多少次,只会加载一次</p>
+</blockquote>
+<h4 id="创建包"><a href="#创建包" class="headerlink" title="创建包"></a>创建包</h4><blockquote>
+<p>包是在模块基础上更深一步的抽象，Node.js 的包类似于 C/C++ 的函数库或者 Java/.Net<br>的类库。它将某个独立的功能封装起来，用于发布、更新、依赖管理和版本控制。Node.js 根<br>据 CommonJS 规范实现了包机制，开发了 npm来解决包的发布和获取需求。<br>Node.js 的包是一个目录，其中包含一个 JSON 格式的包说明文件 package.json。严格符<br>合 CommonJS 规范的包应该具备以下特征:</p>
+</blockquote>
+<ul>
+<li>package.json 必须在包的顶层目录下；</li>
+<li>二进制文件应该在 bin 目录下；</li>
+<li>JavaScript 代码应该在 lib 目录下；</li>
+<li>文档应该在 doc 目录下；</li>
+<li>单元测试应该在 test 目录下。</li>
+</ul>
+<blockquote>
+<p>在写包的时候,尽量按照 CommonJS 的规范</p>
+<p>一个模块除了是一个js文件外,还可以是一个文件夹</p>
+</blockquote>
+<pre>
+
+    //somepackage/index.js
+    exports.hello = function() {
+    console.log('Hello.');
+    };
+    然后在 somepackage 之外建立 getpackage.js，内容如下：
+    //getpackage.js
+    var somePackage = require('./somepackage');
+    somePackage.hello();
+</pre>
+
+<blockquote>
+<p>此外,还可以将目标文件放在lib文件内,将该地址放在package.json文件中的main键值中</p>
+</blockquote>
+<pre>
+    {
+    "main" : "./lib/interface.js"
+    }
+</pre>
+
+<p>3 创建全局链接</p>
+<blockquote>
+<p>我们用npm安装的全局包是不能够被我们require到的,只有本地安装的包才可以,当我们的系统原来安装了全局包,可以通过<code>npm link [packageName]</code> 来移植到node_modules中.不过改名了在window系统是不受支持</p>
 </blockquote>
 
           
@@ -331,7 +385,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -372,7 +426,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -419,7 +473,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

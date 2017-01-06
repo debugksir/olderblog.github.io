@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/18/H5-C3新特性/" itemprop="url">
-                  H5/C3新特性
+                <a class="post-title-link" href="/2016/03/08/less环境配置/" itemprop="url">
+                  less环境配置
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-18T21:04:17+08:00" content="2016-01-18">
-              2016-01-18
+            <time itemprop="dateCreated" datetime="2016-03-08T19:59:56+08:00" content="2016-03-08">
+              2016-03-08
             </time>
           </span>
 
@@ -274,38 +274,28 @@
       
         
           
-            <h2 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h2><ul>
-<li>语义化更好的内容标签(header,nav,section,footer,aside,article)</li>
-<li>表单控件, calendar,date,time,email,url,search</li>
-<li>音频、视频API(aduio,video)</li>
-<li>画布API(canvas)</li>
-<li>地理API(geolocation)</li>
-<li>本地离线存储 localStorage 长期存储数据,浏览器关闭后数据不会丢失</li>
-<li>sessionStorage 数据在浏览器关闭后自动删除</li>
-<li>新技术 webworker,websocket,geolocation</li>
-</ul>
-<h2 id="HTML5移除的元素"><a href="#HTML5移除的元素" class="headerlink" title="HTML5移除的元素"></a>HTML5移除的元素</h2><ul>
-<li>纯表现元素: basefont, big, center, font, s, strike, tt, u</li>
-<li>对可用性产生负面影响的元素: frame, frameset, noframes</li>
-</ul>
-<h2 id="低版本浏览器如何支持HTML5新标签"><a href="#低版本浏览器如何支持HTML5新标签" class="headerlink" title="低版本浏览器如何支持HTML5新标签"></a>低版本浏览器如何支持HTML5新标签</h2><blockquote>
-<p>在ie8/7/6下可以通过document.createElement方式创建新标签,可以利用这一特性支持HTML5新标签,创建好标签后还需要添加默认样式,当然更多的是采用html5shim框架:</p>
-<p><pre><br>&lt;!–[if It IE 9]&gt;</pre></p>
-<p><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><br>&lt;![endif]–&gt;</p>
+            <h2 id="less环境配置"><a href="#less环境配置" class="headerlink" title="less环境配置"></a>less环境配置</h2><h3 id="less的简单介绍"><a href="#less的简单介绍" class="headerlink" title="less的简单介绍"></a>less的简单介绍</h3><blockquote>
+<p>less是基于nodejs的一种工具,能够实现对css的预编译,提高css可维护性</p>
 </blockquote>
-<h2 id="CSS3-新特性"><a href="#CSS3-新特性" class="headerlink" title="CSS3 新特性"></a>CSS3 新特性</h2><ul>
-<li>C3实现原件(border-radius),图片边框(border-image),阴影(box-shadow)</li>
-<li>增加了更多的选择器</li>
-<li>@font-fase特性,加载服务器或者第三方库字体</li>
-<li>多列布局(multi-column layout)</li>
-<li>背景属性: background-origin,backgound-clip,background-size</li>
-<li>弹性盒子或者说伸缩盒子</li>
-<li>线性渐变</li>
-<li>变换效果transform: 旋转(rotete),缩放(scale),定位(translate),倾斜(skew)</li>
-<li>过渡效果transitions:transitions-property/duration/delay/timing-function</li>
-<li>动画效果animation</li>
-<li>颜色 opacity,rgba,hsla</li>
-<li>文字效果: text-shadow/overflow,word-wrap</li>
+<h3 id="命令提示符下对less的编译"><a href="#命令提示符下对less的编译" class="headerlink" title="命令提示符下对less的编译"></a>命令提示符下对less的编译</h3><ul>
+<li>安装node.js (查看是否安装好node,在命令提示符中写入node -v)</li>
+<li>打开命令提示符 (win+r) </li>
+<li>在node环境下安装less (npm install less -g) </li>
+<li>检查是否安装成功(lessc -v)</li>
+<li>如何在命令提示符中完成less文件对css的转换<ol>
+<li>cd到你的less文件目录</li>
+<li>输入命令: lessc less文件名.less 转换成css的文件名.css</li>
+</ol>
+</li>
+</ul>
+<h3 id="利用sublime编译器完成对less的编译"><a href="#利用sublime编译器完成对less的编译" class="headerlink" title="利用sublime编译器完成对less的编译"></a>利用sublime编译器完成对less的编译</h3><ul>
+<li>打开sublime </li>
+<li>快捷键 ctr+shift+p</li>
+<li>输入install package 回车</li>
+<li>安装less lessc 和less2css 3个插件</li>
+<li>在命令提示符中安装这个插件: npm install less-plugin-clean-css -g</li>
+<li>打开sublime首选项(preferences)中的package setting可以看到多了less 和 less2css</li>
+<li>可以对less2css的setting-default拷贝,粘贴到setting-user中  修改配置来满足自己的需求</li>
 </ul>
 
           
@@ -339,7 +329,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -380,7 +370,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -427,7 +417,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/08/less环境配置/" itemprop="url">
-                  less环境配置
+                <a class="post-title-link" href="/2017/01/01/node-js学习笔记一/" itemprop="url">
+                  'node.js学习笔记一'
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-08T19:59:56+08:00" content="2016-03-08">
-              2016-03-08
+            <time itemprop="dateCreated" datetime="2017-01-01T15:23:00+08:00" content="2017-01-01">
+              2017-01-01
             </time>
           </span>
 
@@ -274,29 +274,35 @@
       
         
           
-            <h2 id="less环境配置"><a href="#less环境配置" class="headerlink" title="less环境配置"></a>less环境配置</h2><h3 id="less的简单介绍"><a href="#less的简单介绍" class="headerlink" title="less的简单介绍"></a>less的简单介绍</h3><blockquote>
-<p>less是基于nodejs的一种工具,能够实现对css的预编译,提高css可维护性</p>
+            <h1 style="text-align: center;">Node.js学习笔记一</h1>
+
+<h4 id="Node-js-是什么"><a href="#Node-js-是什么" class="headerlink" title="Node.js 是什么"></a>Node.js 是什么</h4><blockquote>
+<p>Node.js 不是一门独立的语言,不是Javascript的框架,不是浏览器的库,Node.js是一个让Javascript运行在服务器的开发平台</p>
 </blockquote>
-<h3 id="命令提示符下对less的编译"><a href="#命令提示符下对less的编译" class="headerlink" title="命令提示符下对less的编译"></a>命令提示符下对less的编译</h3><ul>
-<li>安装node.js (查看是否安装好node,在命令提示符中写入node -v)</li>
-<li>打开命令提示符 (win+r) </li>
-<li>在node环境下安装less (npm install less -g) </li>
-<li>检查是否安装成功(lessc -v)</li>
-<li>如何在命令提示符中完成less文件对css的转换<ol>
-<li>cd到你的less文件目录</li>
-<li>输入命令: lessc less文件名.less 转换成css的文件名.css</li>
-</ol>
-</li>
+<h4 id="Node-js-能做什么"><a href="#Node-js-能做什么" class="headerlink" title="Node.js 能做什么"></a>Node.js 能做什么</h4><ul>
+<li>Javascript是由客户端而产生,Node.js为网络而生</li>
+<li>实现复杂逻辑的网站</li>
+<li>基于社交网络的大WEB的应用</li>
+<li>Web Socket服务器</li>
+<li>TCP/UDP套接字应用程序</li>
+<li>命令行工具</li>
+<li><p>交互式终端程序</p>
+<h4 id="异步式I-O与事件驱动"><a href="#异步式I-O与事件驱动" class="headerlink" title="异步式I/O与事件驱动"></a>异步式I/O与事件驱动</h4></li>
 </ul>
-<h3 id="利用sublime编译器完成对less的编译"><a href="#利用sublime编译器完成对less的编译" class="headerlink" title="利用sublime编译器完成对less的编译"></a>利用sublime编译器完成对less的编译</h3><ul>
-<li>打开sublime </li>
-<li>快捷键 ctr+shift+p</li>
-<li>输入install package 回车</li>
-<li>安装less lessc 和less2css 3个插件</li>
-<li>在命令提示符中安装这个插件: npm install less-plugin-clean-css -g</li>
-<li>打开sublime首选项(preferences)中的package setting可以看到多了less 和 less2css</li>
-<li>可以对less2css的setting-default拷贝,粘贴到setting-user中  修改配置来满足自己的需求</li>
-</ul>
+<blockquote>
+<p>Node.js 最大的特点就是采用异步式I/O与事件驱动的架构设计. 对于高并发的解决方案,传统的架构是多线程模式,也就是每个业务逻辑提供一个系统线程,通过系统线程切换来弥补同步式I/O调用时的时间开销. Node.js使用的单线程模式,在执行的过程中会维护一个事件队列,程序在执行时再进入事件循环等待下一个事件的到来</p>
+</blockquote>
+<h4 id="浏览器的引擎拾贝"><a href="#浏览器的引擎拾贝" class="headerlink" title="浏览器的引擎拾贝"></a>浏览器的引擎拾贝</h4><blockquote>
+<p>为什么Ext.js在Chrome浏览器上运行如此快,Chrome浏览器与Node.js浏览器的引擎同为V8<br>传统: 浏览器-&gt;Apache/IIS/Nginx/Tomcat-&gt;php/c#/java/python;  node: 浏览器-&gt;node.js</p>
+</blockquote>
+<h4 id="Node-js环境的安装"><a href="#Node-js环境的安装" class="headerlink" title="Node.js环境的安装"></a>Node.js环境的安装</h4><blockquote>
+<p>打开网址<code>nodjs.org</code>下载对应系统的安装包, 打开命令提示符cmd 输入node -v 查看版本,查看是否安装成功,输入node进入编译模式,执行一段js代码比如<code>console.log(&#39;hello world&#39;)</code>体验一番</p>
+</blockquote>
+<h4 id="Node-js初体验"><a href="#Node-js初体验" class="headerlink" title="Node.js初体验"></a>Node.js初体验</h4><p>使用node.js开启服务</p>
+<p><pre><br>var http = require(‘http’);<br>http.createServer(function(req,res){<br>    res.writeHead(200,{‘Content-Type’:’text/html’});<br>    res.write(‘<h1>hello world!</h1>‘);<br>    res.end(‘<p>我是nodejs服务器</p>‘);<br>}).listen(3000);<br></pre><br>我们可以通过在浏览器打开<code>localhost:3000</code>查看结果</p>
+<blockquote>
+<p>为了方便以后测试, 我们可以安装一个<code>supervisor</code>插件来监听我们的代码调试</p>
+</blockquote>
 
           
         
@@ -329,7 +335,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -370,7 +376,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -417,7 +423,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

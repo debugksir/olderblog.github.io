@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/21/px、em和rem的区别/" itemprop="url">
-                  px、em和rem的区别
+                <a class="post-title-link" href="/2016/03/13/wamp的安装和环境配置/" itemprop="url">
+                  wamp的安装和环境配置
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-21T20:04:56+08:00" content="2016-01-21">
-              2016-01-21
+            <time itemprop="dateCreated" datetime="2016-03-13T20:01:35+08:00" content="2016-03-13">
+              2016-03-13
             </time>
           </span>
 
@@ -274,31 +274,31 @@
       
         
           
-            <h2 id="px、em、rem的区别及换算方法"><a href="#px、em、rem的区别及换算方法" class="headerlink" title="px、em、rem的区别及换算方法"></a>px、em、rem的区别及换算方法</h2><h4 id="px的特点："><a href="#px的特点：" class="headerlink" title="px的特点："></a>px的特点：</h4><ol>
-<li>IE无法调整那些使用px作为单位的字体大小；</li>
-<li>国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li>
-<li>Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。(引自CSS2.0手册)。</li>
-</ol>
+            <h2 id="wamp的安装和环境配置"><a href="#wamp的安装和环境配置" class="headerlink" title="wamp的安装和环境配置"></a>wamp的安装和环境配置</h2><h3 id="wamp的简单介绍"><a href="#wamp的简单介绍" class="headerlink" title="wamp的简单介绍"></a>wamp的简单介绍</h3><blockquote>
+<p>Windows+Apache+Mysqul++PHP的首字母组合,集成安装环境,windows下的apache,php和mysql的服务器软件</p>
+</blockquote>
+<h3 id="wamp的安装"><a href="#wamp的安装" class="headerlink" title="wamp的安装"></a>wamp的安装</h3><ul>
+<li>注意必需安装在没有中文文件名的目录下</li>
+<li>安装好后我们可以在浏览器中输入127.0.0.1查看是否安装成功</li>
+<li>为了能让更多域名来访问我们的服务器,我们需要对wamp安装目录下的bin下的apache下的Apache版本下的canf下的httpd.conf进行响应配置,这里我以自己的安装目录为例 <code>C:\wamp\bin\apache\Apache2.2.21\conf\httpd.conf</code></li>
+<li>在第235 行添加 Allow from all ,打开服务器的访问权限</li>
+<li>如何修改成我们指定的根目录呢? </li>
+</ul>
 <blockquote>
-<p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。(引自CSS2.0手册)。</p>
-<p>px与em的换算方法：<br>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p>
-<p>这里为大家提供一个网址，打开之后，根据自己的需要输入相应的数值就能一键换算：</p>
+<p>在httpd.conf文件的第178和205行把我们指定的根目录文件拷贝过来</p>
 </blockquote>
-<p><code>http://pxtoem.com/</code></p>
-<h4 id="em的特点："><a href="#em的特点：" class="headerlink" title="em的特点："></a>em的特点：</h4><blockquote>
-<p>em的值并不是固定的；em会继承父级元素的字体大小。所以我们在写CSS的时候，需要注意两点：</p>
+<ul>
+<li>如何实现对多个网站的管理呢?</li>
+</ul>
+<blockquote>
+<p>在httpd.conf第467行找到virtual hosts下面的include, 把include前面的#号去掉,即打开注释,<br>然后在C:\wamp\bin\apache\Apache2.2.21\conf\extra\httpd-vhosts.conf 中对<br>DocumentRoot “E:/www/example”<br>ServerName “example.com”<br>ServerAlias “www.example.com”<br>三项修改即可,注意修改之后须重启服务器才能生效</p>
 </blockquote>
-<ol>
-<li>body选择器中声明Font-size=62.5%；</li>
-<li>将你的原来的px数值除以10，然后换上em作为单位；</li>
-<li>重新计算那些被放大的字体的em数值。避免字体大小的重复声明。也就是避免1.2 * 1.2= 1.44的现象。比如说你在#content中声明了字体大小为1.2em，那么在声明p的字体大小时就只能是1em，而不是1.2em, 因为此em非彼em，它因继承#content的字体高而变为了1em=12px。</li>
-</ol>
-<h4 id="rem的特点："><a href="#rem的特点：" class="headerlink" title="rem的特点："></a>rem的特点：</h4><blockquote>
-<p>rem是CSS3新增的一个相对单位（root em，根em），这个单位引起了广泛关注。这个单位与em有什么区别呢？区别在于使用rem为元素设定字体大小时，仍然是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。下面就是一个例子：</p>
+<ul>
+<li>如何对DNS(ip域名映射关系)进行设置呢?</li>
+</ul>
+<blockquote>
+<p>在C:\Windows\System32\drivers\etc\hosts下,将hosts文件拷贝出来,把127.0.0.1指定成你想要的域名地址,然后将原来的hosts文件覆盖即可</p>
 </blockquote>
-<pre>
-p {font-size:14px; font-size:.875rem;}
-</pre>
 
           
         
@@ -331,7 +331,7 @@ p {font-size:14px; font-size:.875rem;}
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -372,7 +372,7 @@ p {font-size:14px; font-size:.875rem;}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -419,7 +419,7 @@ p {font-size:14px; font-size:.875rem;}
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

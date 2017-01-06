@@ -230,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/23/git笔记/" itemprop="url">
-                  git笔记
+                <a class="post-title-link" href="/2016/11/06/MongoDB-shell命令/" itemprop="url">
+                  'MongoDB-shell命令'
                 </a>
               
             
@@ -244,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-23T20:01:13+08:00" content="2016-01-23">
-              2016-01-23
+            <time itemprop="dateCreated" datetime="2016-11-06T11:39:11+08:00" content="2016-11-06">
+              2016-11-06
             </time>
           </span>
 
@@ -274,60 +274,41 @@
       
         
           
-            <h2 id="git-帮我们解决了三个主要问题"><a href="#git-帮我们解决了三个主要问题" class="headerlink" title="git 帮我们解决了三个主要问题"></a>git 帮我们解决了三个主要问题</h2><ul>
-<li>版本管理git add -&gt; git commit = 新版本</li>
-<li><p>多任务开发(分支) 一个分支代表一个任务,分支之间不相互影响</p>
+            <p></p><h1 text-align="center">MongoDB shell 常用命令<p></p>
 <blockquote>
-<p>git branch -&gt; git checkout -&gt; git add -&gt; git commit -&gt; 新版本</p>
+<p>关系数据的表的record 必须拥有field,mongoDB的一行数据以文档(document) 的形式,相在关系数据库中是一条记录,mongoDB的key可以不一样,在关系数据库中查询使用SQL,在mongoDB中使用find函数-&gt;基于BSON的特殊查询工具,mongodb的灵活度扩展度极高</p>
+<p>创建一个.bat格式的文件,在文件中输入<code>mongo --dbpath 文件路径</code>,创建一个开设端口的.bat格式文件,在文件中输入<code>mongo 127.0.0.1:27017/admin</code> 分别打开即可开启数据库 </p>
+<ul>
+<li>创建一个数据库 <code>use[datebase]</code></li>
+<li>插入文档 <code>db.[documentName].insert({})</code></li>
+<li>查看所有数据库 <code>show dbs</code></li>
+<li>查看数据库中所有文档 <code>show collections</code></li>
+<li>查询文档数据 <code>db.[documentName].find()</code> 查询一条 <code>db.[documentNmae].findOne()</code></li>
+<li>批量插入文档 <code>1. 用mongo的应用驱动. 2.shell的for循环</code></li>
+<li>删除列表中的所有数据 <code>db.[documentName].remove()</code></li>
+<li>根据条件删除 <code>db.text.remove({name: &quot;ksir&quot;})</code></li>
+<li>删除库中的集合 <code>db.[documentName].drop()</code></li>
+<li>删除数据库 <code>db.dropDatabase()</code></li>
+<li>显示帮助 <code>数据库下的帮助:db.help(),集合下的帮助:db.[documentName].help()</code></li>
+<li>mongoDB的API <code>http://api.mongodb.org</code></li>
+<li>强硬的文档替换式更新操作 <code>db.[documentName].update({查询器},{修改器})</code></li>
+<li>显示数据库状态 <code>db.stats()</code></li>
+</ul>
+<p>主键冲突的时候会报错并且停止更新操作</p>
 </blockquote>
+<ul>
+<li>insertOrUpdate 操作 <code>如果存在数据就执行更新操作,否则执行插入操作 db.[documentName]({查询器},{修改器},true)</code></li>
+<li>批量更新操作 <code>当查修多条数据的时候默认修改第一条数据,如何批量修改数据: db.[documentName].update({查询器},{修改器},false,true)</code></li>
+<li><p>$addToSet与$each 结合完成批量数组更新 <code>db.text.update({_id:100},{$addToSet:{books:{$each:[&quot;JS&quot;,&quot;HTML&quot;,&quot;CSS&quot;,&quot;DB&quot;]}}})</code></p>
 </li>
-<li><p>协同开发(多人共同开发) 通过共享充仓库实现</p>
+<li><p>数据库和集合的命名规范</p>
+</li>
+</ul>
 <blockquote>
-<p>xxx.git -&gt; git init –bare (创建仓库)<br>git push -&gt; xxx.git 上传到仓库<br>git pull -&gt; xxx.git 从仓库下载到本地<br>注意 一个文件想要下载仓库的版本  必须先初始化为 git 仓库</p>
+<p>不能是空字符串;不能含有’’,空格,$,/,\等;应全部小写;最多64个字节;不能与数据保留库名同名如”admin”,”local”,”config”;</p>
+<p>mongoDB 的shell内置Javascript引擎,可以直接执行js代码;shell可以使用eval</p>
 </blockquote>
-</li>
-</ul>
-<h2 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h2><ul>
-<li>git config –global user.name “yourName” user.email “yourEmail”</li>
-<li>git init (在项目的根目录初始化git仓库)</li>
-<li>创建版本 git add -&gt; git commit -&gt; 新版本 (默认添加一个master版本)</li>
-<li>查看状态 git status</li>
-<li>git log 查看历史版本</li>
-<li>通过分支实现多任务开发 git branch 分支名 -&gt; 切换分支 git checkout 分支名 -&gt; git add -&gt; git commit -&gt; 新版本</li>
-<li>git checkout -b 分支名 (创建并切换至分支)</li>
-<li>git branch 查看分支</li>
-<li>git merge 合并分支</li>
-<li>git branch -d 删除分支</li>
-<li>通过共享仓库实现协同开发 <ol>
-<li>xx.git 的任意目录 -&gt; 进入该目录 -&gt; git init –bare</li>
-<li>进入一个git仓库中 -&gt; git push ../xx.git master </li>
-<li>进入另一个git仓库中 -&gt; git pull ../xx.git master</li>
-<li>xx.git 可以放到本地计算机上,但是其他开发者没有办法访问</li>
-<li>要解决的话,需要一个专门服务器来存放xx.git共享仓库</li>
-<li>git push user@ip:目录/xx.git master</li>
-<li>但是并不是所有人都能熟练操作服务器,所以此种方法成本比较高</li>
-<li>github 提供了共享仓库的功能</li>
-<li>以表单形式就可以创建一个仓库,并且会提供仓库的地址</li>
-<li>git push github 仓库的地址 分支名</li>
-<li>git pull github 仓库的地址 分支名</li>
-<li>为了免密码共享代码,可以通过ssh来实现</li>
-<li>ssh-keygen -t sra 命令可以在本地创建公钥和私钥</li>
-<li>将公钥的内容放到github对应账号的ssh-key下</li>
-<li>ssh 是实现计算机间的登录</li>
-<li>git remote add 短名字 真是名字</li>
-<li>如何使用 git clone 仓库地址</li>
-<li>mkdir 目录 -&gt; cd 目录 -&gt; git init -&gt; git remote add origin 仓库地址 -&gt; git pull origin master</li>
-</ol>
-</li>
-</ul>
-<h2 id="git-规范管理"><a href="#git-规范管理" class="headerlink" title="git 规范管理"></a>git 规范管理</h2><ul>
-<li>不要创建过多分支</li>
-<li>有一个”稳定分支”,即 master 分支不要轻易修改</li>
-<li>有一个开发分支(developer),保证 master 分支的稳定性</li>
-<li>所有的功能分支(feature)从 developer 创建</li>
-<li>所有功能开发完成后新建发布分支(release)</li>
-</ul>
-
+</h1>
           
         
       
@@ -359,7 +340,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -400,7 +381,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -447,7 +428,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
